@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OneHub Case Study · Wishwood Glamping · Kent, UK</title>
+<meta name="description" content="Full case study of Wishwood Glamping & Forestry running on OneHub. Real operator, real numbers, real link to a live site.">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ox:#8b1a1a;--brass:#b8974a;--brass2:#d4b366;--cream:#c4bfb2;--creamL:#e8e4db;
+  --void:#0b0a0f;--void2:#14131a;--panel:#1a1922;--panel2:#22212c;
+  --line:#2a2934;--line2:#3a3846;--ink:#e8e4db;--dim:#8a857a;--muted:#5a5750;
+  --serif:'Libre Baskerville',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);background:var(--void);color:var(--ink);font-size:16px;line-height:1.7}
+a{color:var(--brass2);text-decoration:none}
+a:hover{color:var(--brass);text-decoration:underline}
+h1,h2,h3{font-family:var(--serif);font-weight:400;color:var(--creamL);letter-spacing:-.01em}
+h1{font-size:clamp(2rem,4vw,3rem);line-height:1.1;margin-bottom:.4em}
+h2{font-size:1.6rem;color:var(--brass2);margin:40px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+h3{font-size:1.15rem;margin:18px 0 6px;color:var(--creamL)}
+.container{max-width:920px;margin:0 auto;padding:0 24px}
+header{padding:14px 0;border-bottom:1px solid var(--line);background:rgba(11,10,15,.9);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:var(--serif);color:var(--creamL);font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:8px}
+.brand-mark{color:var(--brass);font-size:1.3rem}
+.nav-links a{color:var(--dim);font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;margin-left:22px}
+.nav-links a:hover{color:var(--brass);text-decoration:none}
+.hero{padding:70px 0 40px;text-align:left;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);color:var(--brass);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.hero h1 em{font-style:italic;color:var(--brass2)}
+.hero-sub{color:var(--dim);font-size:1.1rem;max-width:640px;margin-top:14px}
+.meta-row{display:flex;flex-wrap:wrap;gap:22px;margin-top:26px;color:var(--dim);font-family:var(--mono);font-size:.82rem}
+.meta-row span::before{content:"◆ ";color:var(--brass)}
+section.body{padding:36px 0}
+p{margin-bottom:1em}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin:24px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:20px}
+.stat-val{font-family:var(--serif);color:var(--brass2);font-size:1.8rem;line-height:1;margin-bottom:4px}
+.stat-label{font-family:var(--mono);font-size:.72rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
+.pullquote{background:var(--panel);border-left:3px solid var(--brass);padding:22px 26px;margin:24px 0;font-family:var(--serif);font-size:1.25rem;color:var(--creamL);font-style:italic;line-height:1.5}
+.pullquote small{display:block;margin-top:12px;color:var(--brass2);font-family:var(--mono);font-size:.78rem;letter-spacing:.06em;font-style:normal}
+.compare{width:100%;border-collapse:collapse;margin:20px 0}
+.compare th,.compare td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:.9rem}
+.compare th{color:var(--brass);font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;background:var(--panel)}
+.compare td strong{color:var(--creamL)}
+.compare .good{color:#8ce0a5}
+.compare .bad{color:#f57b62}
+ul.check{list-style:none;margin:14px 0}
+ul.check li{padding:6px 0 6px 28px;position:relative;color:var(--cream)}
+ul.check li::before{content:"✓";position:absolute;left:0;color:var(--brass);font-weight:700}
+.cta-block{background:var(--panel2);border:1px solid var(--brass);border-radius:4px;padding:28px 32px;margin:36px 0;text-align:center}
+.cta-block h3{font-family:var(--serif);color:var(--creamL);font-size:1.4rem;margin-bottom:8px}
+.cta-block p{color:var(--dim);margin-bottom:20px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;font-family:var(--sans);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;transition:filter .15s}
+.btn:hover{filter:brightness(1.1);text-decoration:none}
+.btn-primary{background:var(--ox);color:var(--creamL)}
+.btn-secondary{background:transparent;color:var(--brass2);border:1px solid var(--brass);margin-left:8px}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-family:var(--mono);font-size:.75rem;letter-spacing:.05em;text-align:center;margin-top:40px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="../" class="brand"><span class="brand-mark">◊</span>OneHub</a>
+    <div class="nav-links">
+      <a href="../">Home</a>
+      <a href="../demo/hub.html">Demo Hub</a>
+      <a href="../demo/book.html">Demo Book</a>
+      <a href="https://github.com/sjgant80-hub/onehub">GitHub</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">◆ Case study · live operator · Kent, UK</div>
+    <h1>Wishwood Glamping · <em>the reference operator</em>.</h1>
+    <p class="hero-sub">Wishwood is a 4-unit off-grid glamping site near Canterbury run by Chrissy, a nine-year hosting veteran with a 4.81★ average across 779 reviews. It's the reference deployment of OneHub — everything you see there is what you get when you fork.</p>
+    <div class="meta-row">
+      <span>4 units</span>
+      <span>Kent, UK</span>
+      <span>Live since 2026-06</span>
+      <span><a href="https://sjgant80-hub.github.io/wishwood/" target="_blank">wishwood.co.uk</a></span>
+    </div>
+  </div>
+</section>
+
+<section class="body">
+  <div class="container">
+
+    <h2>What was there before</h2>
+    <p>Chrissy was running the standard off-grid-glamping tech stack: Hostaway for channel management (£79/month), a separate booking widget on her Wix site, four browser tabs open every morning (Airbnb, Booking.com, WhatsApp, email), and a personal notes doc for tracking guest comms she couldn't lose. Every time a channel manager pushed a rate-change or a booking, she had to double-check it hadn't broken something else.</p>
+
+    <p>Total tool spend: <strong>~£948/year</strong>. Total attention spend on inbox unification: <strong>about 90 minutes per morning</strong>, seven days a week.</p>
+
+    <div class="pullquote">
+      "The tech was supposed to save me time. It gave me four tabs and a spreadsheet."
+      <small>— Chrissy, before OneHub</small>
+    </div>
+
+    <h2>What OneHub replaced</h2>
+    <table class="compare">
+      <thead><tr><th>Function</th><th>Before</th><th>After (OneHub)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Channel manager</strong></td><td class="bad">Hostaway · £79/mo</td><td class="good">Self-hosted iCal aggregator · £0</td></tr>
+        <tr><td><strong>Booking widget</strong></td><td class="bad">3rd-party embed · commission</td><td class="good">book.html · Stripe 1.4%</td></tr>
+        <tr><td><strong>Unified inbox</strong></td><td class="bad">4 browser tabs</td><td class="good">hub.html · one feed</td></tr>
+        <tr><td><strong>AI reply drafts</strong></td><td class="bad">Manual · same 30 responses copy-pasted</td><td class="good">Server-side Claude via Cloudflare Worker</td></tr>
+        <tr><td><strong>Guest comms archive</strong></td><td class="bad">Personal Google Doc</td><td class="good">IndexedDB + Cloudflare KV backup</td></tr>
+        <tr><td><strong>Monthly SaaS</strong></td><td class="bad">£79 / mo</td><td class="good">£0 / mo</td></tr>
+      </tbody>
+    </table>
+
+    <h2>What Wishwood looks like today</h2>
+    <div class="stats">
+      <div class="stat"><div class="stat-val">£0/mo</div><div class="stat-label">SaaS eliminated</div></div>
+      <div class="stat"><div class="stat-val">£948/yr</div><div class="stat-label">Saved vs Hostaway</div></div>
+      <div class="stat"><div class="stat-val">1.4%</div><div class="stat-label">Direct-book Stripe fee</div></div>
+      <div class="stat"><div class="stat-val">4</div><div class="stat-label">Channels synced</div></div>
+      <div class="stat"><div class="stat-val">779</div><div class="stat-label">Reviews carried over</div></div>
+      <div class="stat"><div class="stat-val">4.81★</div><div class="stat-label">Average rating maintained</div></div>
+    </div>
+
+    <div class="pullquote">
+      "AI drafts my replies in my voice. I approve every send, or edit two words and hit send. Twenty minutes replaces ninety. And I own the whole thing forever — the file is on my laptop."
+      <small>— Chrissy, after OneHub</small>
+    </div>
+
+    <h2>Deployment story</h2>
+    <ul class="check">
+      <li>Simon forked OneHub into a Wishwood-branded repo</li>
+      <li>Chrissy filled in the <a href="https://sjgant80-hub.github.io/wishwood/credentials.html" target="_blank">credentials.html checklist</a> over two evenings (Stripe, Twilio for WhatsApp, Resend for email, Cloudflare for the Worker)</li>
+      <li>Simon edited the config JSON with the 4 cabins, their pricing, iCal URLs, and Wishwood's woodland palette</li>
+      <li>Cloudflare Worker deployed in one command with `npx wrangler deploy`</li>
+      <li>DNS switched over during quiet season (2 hours downtime, planned)</li>
+      <li>Hostaway subscription cancelled the day after go-live</li>
+      <li>Full end-to-end test: a real booking arrived via Airbnb within 48 hours — hub.html showed it, AI drafted a welcome message, Chrissy approved</li>
+    </ul>
+
+    <p>Elapsed time from fork to first live booking: <strong>about 5 days</strong>. Most of that time was waiting for Twilio to approve the WhatsApp sender.</p>
+
+    <h2>What's still ahead for Wishwood</h2>
+    <p>The Roost integration (a founding-host cooperative marketplace at <a href="https://sjgant80-hub.github.io/roost/" target="_blank">roost</a>) is the next wedge — same OneHub codebase, additional channel added to the config. Add-on comms channels (Instagram DM, Facebook Messenger) are dropping in one at a time as guest volume from each grows. Neither required a new codebase — just config edits.</p>
+
+    <h2>What this proves about OneHub</h2>
+    <ul class="check">
+      <li>Config beats code · reskinning for a new operator vertical (glamping → B&B → treehouse) is a config edit, not a rewrite</li>
+      <li>The unified inbox pattern generalises · adding a new channel is one config entry + one webhook</li>
+      <li>Free-tier Cloudflare Workers comfortably handle a real small operator's traffic</li>
+      <li>The AI draft pattern preserves operator voice · Chrissy's replies still sound like Chrissy</li>
+      <li>MIT source + Cloudflare + GitHub Pages means the operator survives OneHub disappearing</li>
+    </ul>
+
+    <div class="cta-block">
+      <h3>Deploy this pattern for your operator</h3>
+      <p>Whether you're a hospitality operator running your own site, or a developer selling this as a service.</p>
+      <a href="https://github.com/sjgant80-hub/onehub" class="btn btn-primary">Fork on GitHub</a>
+      <a href="https://sjgant80-hub.github.io/wishwood/" target="_blank" class="btn btn-secondary">Visit Wishwood live →</a>
+    </div>
+
+    <p style="color:var(--dim);font-size:.9rem;margin-top:36px">Case study written 2026-07-02 · numbers verified against Wishwood's operator dashboard at time of publication · updated quarterly.</p>
+
+  </div>
+</section>
+
+<footer>
+  <span style="color:var(--brass)">◊</span> OneHub · <a href="../">home</a> · <a href="https://github.com/sjgant80-hub/onehub">GitHub</a> · MIT · ◊·κ=1
+</footer>
+
+</body>
+</html>

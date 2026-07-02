@@ -1,0 +1,39 @@
+# OneHub Worker · Cloudflare wrangler config
+# Copy this to `wrangler.toml` and fill in your values.
+
+name = "your-onehub-api"                # rename to yourbrand-api
+main = "index.mjs"
+compatibility_date = "2026-06-01"
+
+# ─── KV namespace binding ────────────────────────────────────────
+# Run once to create: npx wrangler kv:namespace create "ONEHUB_STATE"
+# Then paste the id below.
+[[kv_namespaces]]
+binding = "ONEHUB_STATE"
+id = "your_kv_namespace_id_here"
+
+# ─── secrets (set via: npx wrangler secret put NAME) ────────────
+# STRIPE_SECRET_KEY
+# STRIPE_WEBHOOK_SECRET
+# ANTHROPIC_KEY                   (optional)
+# OPENAI_KEY                      (optional)
+# RESEND_KEY                      (or SENDGRID_KEY)
+# TWILIO_ACCOUNT_SID              (if WhatsApp via Twilio)
+# TWILIO_AUTH_TOKEN
+# WHATSAPP_SENDER                 (E.164 phone number)
+# WA_WEBHOOK_VERIFY_TOKEN         (random 32-char hex you invent)
+# META_APP_SECRET                 (if WhatsApp via Meta Cloud API)
+
+# ─── optional env vars (non-secret) ─────────────────────────────
+[vars]
+FRONTEND_ORIGIN = "https://your-brand.github.io"
+CORS_ORIGINS = "https://your-brand.github.io,https://yourdomain.com"
+
+# ─── custom domain (recommended for stable webhook URLs) ───────
+# routes = [
+#   { pattern = "api.yourdomain.com/*", zone_name = "yourdomain.com" }
+# ]
+
+# ─── observability ──────────────────────────────────────────────
+[observability]
+enabled = true

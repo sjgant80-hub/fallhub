@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OneHub Demo · Operator Hub · SampleStay Kent</title>
+<meta name="description" content="Live demo of the OneHub operator hub. Unified inbox + calendar + guest CRM · config-driven · single HTML.">
+<meta name="theme-color" content="#18171a">
+<style>
+:root{
+  --woodsmoke:#18171a;--deep:#1f1e22;--surface:#27262b;--raised:#302f35;
+  --moss:#2d4a3e;--moss-bright:#3d6a55;--leaf:#6b9d6f;
+  --ember:#c97a3d;--ember-glow:rgba(201,122,61,0.12);
+  --gold:#c9a84c;--linen:#ebe5d6;
+  --text:#d4cfc8;--muted:#7a7681;--dim:#48454d;
+  --border:rgba(235,229,214,0.08);--border-strong:rgba(235,229,214,0.18);
+  --good:#6b9d6f;--warn:#d4a83d;--bad:#c75a4a;--info:#5a8db8;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--woodsmoke);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:13px;line-height:1.5;height:100vh;overflow:hidden}
+a{color:var(--ember);text-decoration:none}
+button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+.app{display:grid;grid-template-columns:220px 1fr 380px;grid-template-rows:44px 1fr;height:100vh}
+.topbar{grid-column:1/-1;background:var(--deep);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:16px}
+.topbar .brand{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--linen);display:flex;align-items:center;gap:8px}
+.topbar .brand .glyph{color:var(--ember);font-size:20px}
+.topbar .biz{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;margin-left:auto}
+.topbar .demo-badge{background:var(--ember-glow);color:var(--ember);border:1px solid var(--ember);padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;border-radius:2px}
+
+.sidebar{background:var(--deep);border-right:1px solid var(--border);padding:16px 0;overflow-y:auto}
+.side-section{padding:6px 20px;margin-top:12px;color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase}
+.side-item{display:flex;align-items:center;gap:10px;padding:9px 20px;color:var(--text);cursor:pointer;font-size:13px;border-left:2px solid transparent;transition:background .12s}
+.side-item:hover{background:var(--surface)}
+.side-item.active{background:var(--surface);border-left-color:var(--ember);color:var(--linen)}
+.side-item .count{margin-left:auto;background:var(--ember);color:var(--woodsmoke);font-family:'JetBrains Mono',monospace;font-size:10px;padding:1px 7px;border-radius:8px;font-weight:600}
+
+.main{overflow-y:auto;padding:20px 24px}
+.main h1{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--linen);font-weight:500;margin-bottom:14px}
+.threads{display:grid;gap:8px}
+.thread{background:var(--deep);border:1px solid var(--border);border-radius:6px;padding:14px 16px;cursor:pointer;transition:border-color .15s}
+.thread:hover{border-color:var(--ember)}
+.thread.active{border-color:var(--ember);background:var(--surface)}
+.thread-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.channel-tag{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;padding:1px 7px;border-radius:2px}
+.tag-airbnb{background:rgba(255,90,95,.15);color:#ff8888;border:1px solid #a34}
+.tag-booking{background:rgba(0,60,150,.2);color:#7ab1e0;border:1px solid #467}
+.tag-whatsapp{background:rgba(37,211,102,.15);color:#7fd39a;border:1px solid #5a5}
+.tag-direct{background:rgba(201,122,61,.15);color:var(--ember);border:1px solid var(--ember)}
+.tag-email{background:rgba(90,141,184,.15);color:#8ab;border:1px solid #467}
+.thread-guest{color:var(--linen);font-weight:600;font-size:14px}
+.thread-when{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:10px;margin-left:auto}
+.thread-preview{color:var(--text);font-size:12.5px;line-height:1.55;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+
+.right{background:var(--deep);border-left:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.right-head{padding:16px 20px;border-bottom:1px solid var(--border)}
+.right-head h3{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--linen);font-weight:500;margin-bottom:4px}
+.right-head .meta{color:var(--muted);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em}
+.chat{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:12px}
+.msg{display:flex;flex-direction:column;gap:4px}
+.msg.guest{align-items:flex-start}
+.msg.you{align-items:flex-end}
+.msg-body{padding:10px 14px;border-radius:12px;max-width:88%;font-size:13px;line-height:1.55}
+.msg.guest .msg-body{background:var(--surface);color:var(--text);border-top-left-radius:2px}
+.msg.you .msg-body{background:var(--ember);color:var(--woodsmoke);border-top-right-radius:2px;font-weight:500}
+.msg-when{font-family:'JetBrains Mono',monospace;font-size:9px;color:var(--muted);letter-spacing:.06em}
+
+.ai-panel{padding:14px 20px;border-top:1px solid var(--border);background:var(--surface)}
+.ai-label{color:var(--gold);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.ai-label::before{content:"◊";color:var(--ember)}
+.ai-draft{background:var(--deep);border:1px solid var(--border-strong);border-radius:6px;padding:12px 14px;color:var(--text);font-size:13px;line-height:1.6;margin-bottom:10px;min-height:60px}
+.ai-actions{display:flex;gap:8px}
+.ai-actions button{padding:8px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;border:1px solid var(--border-strong)}
+.ai-actions .approve{background:var(--moss);color:var(--linen);border-color:var(--moss-bright)}
+.ai-actions .approve:hover{background:var(--moss-bright)}
+.ai-actions .redraft{background:transparent;color:var(--muted)}
+.ai-actions .redraft:hover{color:var(--linen);border-color:var(--linen)}
+
+.status{padding:6px 20px;background:var(--woodsmoke);border-top:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.05em}
+
+@media(max-width:1000px){
+  .app{grid-template-columns:180px 1fr}
+  .right{display:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="topbar">
+    <div class="brand"><span class="glyph">◊</span>OneHub</div>
+    <div class="biz" id="bizName">Loading config...</div>
+    <span class="demo-badge">Demo</span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="side-item active"><span>Inbox</span><span class="count" id="inboxCount">·</span></div>
+    <div class="side-item"><span>Calendar</span></div>
+    <div class="side-item"><span>Bookings</span><span class="count">3</span></div>
+    <div class="side-item"><span>Guests</span></div>
+    <div class="side-section">Channels</div>
+    <div class="side-item"><span>Airbnb</span></div>
+    <div class="side-item"><span>Booking.com</span></div>
+    <div class="side-item"><span>WhatsApp</span></div>
+    <div class="side-item"><span>Direct</span></div>
+    <div class="side-item"><span>Email</span></div>
+    <div class="side-section">Setup</div>
+    <div class="side-item"><a href="../credentials.html" style="color:inherit">Credentials</a></div>
+    <div class="side-item"><span>Admin</span></div>
+  </aside>
+
+  <main class="main">
+    <h1>Unified inbox</h1>
+    <div class="threads" id="threads"></div>
+  </main>
+
+  <aside class="right">
+    <div class="right-head">
+      <h3 id="detailGuest">Ali · WhatsApp</h3>
+      <div class="meta" id="detailMeta">Enquired 2h ago · Cabin One · 3 nights in April</div>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div class="ai-panel">
+      <div class="ai-label">AI draft · in your voice</div>
+      <div class="ai-draft" id="aiDraft">Hi Ali! Yes, Cabin One is free those dates and dogs are welcome — free of charge. Two-night minimum in April but you're already there. Want me to hold it for 24h while you decide? Chrissy 🌲</div>
+      <div class="ai-actions">
+        <button class="approve">Approve &amp; send</button>
+        <button class="redraft">Redraft</button>
+        <button class="redraft">Edit</button>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="status" id="status">◊ config loaded from /config/onehub.config.example.json · offline-first · IDB persistence</div>
+
+<script>
+// ─── OneHub demo hub · config-driven ──────────────────────────
+async function loadConfig() {
+  try {
+    const r = await fetch('../config/onehub.config.example.json');
+    return await r.json();
+  } catch(e) {
+    // fallback for file:// loading
+    return {
+      business: { name: 'SampleStay Kent · demo mode' },
+      units: [{name:'Cabin One'},{name:'Cabin Two'},{name:'Cabin Three'}],
+    };
+  }
+}
+
+const SAMPLE_THREADS = [
+  { channel:'whatsapp', guest:'Ali Karim',   when:'2h ago',  unit:'Cabin One',   preview:'Hi! Are you dog-friendly? Thinking April 12-15 with our terrier — we can send photos of her being a good girl 🐕' },
+  { channel:'airbnb',   guest:'Sofia P.',    when:'4h ago',  unit:'Cabin Two',   preview:'Just booked for May bank holiday — quick question, is there a shop nearby for supplies or should we bring everything?' },
+  { channel:'booking',  guest:'Michael J.',  when:'6h ago',  unit:'Cabin Three', preview:'Hello, is late check-in possible? We land at Heathrow at 8pm and it\'s about 90 mins drive. Would 22:00 work?' },
+  { channel:'direct',   guest:'Emma W.',     when:'yesterday', unit:'Cabin One', preview:'Booked directly through your site last week. Confirming we arrive Friday afternoon around 4. Can\'t wait!' },
+  { channel:'email',    guest:'Tim & Rose',  when:'yesterday', unit:'Cabin Three', preview:'Wondering if you have any wellness / yoga retreat availability in early June? We\'d like the whole site for 5 nights if possible.' },
+  { channel:'whatsapp', guest:'Rob H.',      when:'2d ago',  unit:'Cabin Two',   preview:'What\'s parking like? We have an EV — is there a charger anywhere within a short walk?' },
+];
+
+function chip(c) {
+  const map = { airbnb:'Airbnb', booking:'Booking', whatsapp:'WhatsApp', direct:'Direct', email:'Email' };
+  return `<span class="channel-tag tag-${c}">${map[c]||c}</span>`;
+}
+
+async function boot() {
+  const cfg = await loadConfig();
+  document.getElementById('bizName').textContent = cfg.business.name;
+  document.getElementById('inboxCount').textContent = SAMPLE_THREADS.length;
+  const container = document.getElementById('threads');
+  container.innerHTML = SAMPLE_THREADS.map((t, i) => `
+    <div class="thread ${i===0?'active':''}" data-idx="${i}">
+      <div class="thread-head">
+        ${chip(t.channel)}
+        <span class="thread-guest">${t.guest}</span>
+        <span class="thread-when">${t.when} · ${t.unit}</span>
+      </div>
+      <div class="thread-preview">${t.preview}</div>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.thread').forEach(el => {
+    el.onclick = () => {
+      container.querySelectorAll('.thread').forEach(x => x.classList.remove('active'));
+      el.classList.add('active');
+      const t = SAMPLE_THREADS[el.dataset.idx];
+      renderThread(t);
+    };
+  });
+  renderThread(SAMPLE_THREADS[0]);
+}
+
+function renderThread(t) {
+  document.getElementById('detailGuest').textContent = `${t.guest} · ${t.channel[0].toUpperCase()+t.channel.slice(1)}`;
+  document.getElementById('detailMeta').textContent = `${t.when} · ${t.unit}`;
+  document.getElementById('chat').innerHTML = `
+    <div class="msg guest">
+      <div class="msg-body">${t.preview}</div>
+      <div class="msg-when">${t.when}</div>
+    </div>
+  `;
+
+  // sample AI drafts per channel
+  const drafts = {
+    whatsapp: `Hi ${t.guest.split(' ')[0]}! Yes — dogs stay free and we\'ve got a securely-fenced field for zoomies. Those dates look good for ${t.unit}. Want me to hold it for 24h while you decide? 🌲`,
+    airbnb:   `Hi ${t.guest.split(' ')[0]} — nearest shop is about 8 min drive (Sainsbury\'s Local, open till 22:00). We keep basic staples in the welcome basket though — tea, milk, sourdough, oats. Anything else you need? See you May bank hol!`,
+    booking:  `Hi ${t.guest.split(' ')[0]} — 22:00 check-in is fine. I\'ll leave the key in a lockbox and text you the code the day of. Drive up the lane past the cattle grid, cabin\'s the second on the left. Safe drive from Heathrow.`,
+    direct:   `Hi ${t.guest.split(' ')[0]} — you\'re all set for Friday. I\'ll pop a welcome basket in and light the wood-burner if it\'s cold. See you around 4! Any dietary needs I should know about?`,
+    email:    `Hi ${t.guest.split(' ')[0]} — early June is quiet and taking the whole site is £{price}/night for all 3 units. Would work beautifully for a wellness retreat. What group size and vibe are you thinking? Happy to draft an offer.`,
+  };
+  document.getElementById('aiDraft').textContent = drafts[t.channel] || drafts.direct;
+}
+
+boot();
+</script>
+</body>
+</html>

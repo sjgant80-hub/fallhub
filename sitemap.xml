@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://sjgant80-hub.github.io/onehub/</loc><priority>1.0</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://sjgant80-hub.github.io/onehub/ai.html</loc><priority>0.9</priority></url>
+  <url><loc>https://sjgant80-hub.github.io/onehub/llms.txt</loc><priority>0.9</priority></url>
+  <url><loc>https://sjgant80-hub.github.io/onehub/case-studies/wishwood.html</loc><priority>0.9</priority></url>
+  <url><loc>https://sjgant80-hub.github.io/onehub/demo/hub.html</loc><priority>0.8</priority></url>
+  <url><loc>https://sjgant80-hub.github.io/onehub/demo/book.html</loc><priority>0.8</priority></url>
+  <url><loc>https://sjgant80-hub.github.io/onehub/docs/QUICKSTART.md</loc><priority>0.7</priority></url>
+  <url><loc>https://sjgant80-hub.github.io/onehub/docs/CREDENTIALS-SETUP.md</loc><priority>0.7</priority></url>
+</urlset>

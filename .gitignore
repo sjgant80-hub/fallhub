@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+.env
+worker/.env
+worker/wrangler.toml
+worker/.dev.vars
+config/onehub.config.json
+*.log
+.wrangler/

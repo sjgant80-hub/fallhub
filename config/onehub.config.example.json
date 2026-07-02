@@ -1,0 +1,172 @@
+{
+  "$schema": "./onehub.schema.json",
+  "version": "0.1.0",
+  "business": {
+    "name": "SampleStay Kent",
+    "tagline": "Off-grid cabins, ancient woodland, direct booking",
+    "description": "Three off-grid cabins on 12 acres of Kent woodland. Wood-burners, outdoor kitchens, fire pits nightly (weather permitting). Sleeps 2-4 per cabin.",
+    "location": {
+      "address": "Sample Lane, Canterbury, Kent",
+      "postcode": "CT1 1AA",
+      "country_code": "GB",
+      "lat": 51.31,
+      "lng": 1.10,
+      "timezone": "Europe/London"
+    },
+    "contact": {
+      "email": "bookings@samplestay.co.uk",
+      "phone": "+441234567890",
+      "whatsapp": "+441234567890"
+    },
+    "domain": "samplestay.co.uk",
+    "worker_url": "https://samplestay-api.workers.dev"
+  },
+
+  "brand": {
+    "preset": "woodland",
+    "palette_override": null,
+    "fonts": { "serif": "Cormorant Garamond", "sans": "Inter", "mono": "JetBrains Mono" },
+    "logo_glyph": "◊",
+    "cover_image": "assets/cover.jpg",
+    "gallery": ["assets/gallery-1.jpg", "assets/gallery-2.jpg", "assets/gallery-3.jpg"]
+  },
+
+  "units": [
+    {
+      "id": "cabin-a",
+      "name": "Cabin One",
+      "type": "cabin",
+      "sleeps": 3,
+      "beds": "1 double + 1 single",
+      "amenities": ["wood-burner", "outdoor-kitchen", "fire-pit", "compost-loo", "dogs-welcome"],
+      "nightly_from": 145,
+      "min_nights": 2,
+      "currency": "GBP",
+      "description": "A single-room off-grid cabin, wood-burner in the corner, hobbit-hole feel.",
+      "images": ["assets/cabin-a-1.jpg", "assets/cabin-a-2.jpg"],
+      "channel_ids": {
+        "airbnb": "12345678",
+        "booking_com": "9876543"
+      }
+    },
+    {
+      "id": "cabin-b",
+      "name": "Cabin Two",
+      "type": "cabin",
+      "sleeps": 2,
+      "beds": "1 double",
+      "amenities": ["wood-burner", "outdoor-kitchen", "fire-pit"],
+      "nightly_from": 165,
+      "min_nights": 2,
+      "currency": "GBP",
+      "description": "Vintage caravan restoration · woodland-edge · private fire circle.",
+      "images": ["assets/cabin-b-1.jpg"],
+      "channel_ids": {
+        "airbnb": "12345679",
+        "booking_com": "9876544"
+      }
+    },
+    {
+      "id": "cabin-c",
+      "name": "Cabin Three",
+      "type": "yurt",
+      "sleeps": 4,
+      "beds": "1 double + bunks",
+      "amenities": ["wood-burner", "outdoor-kitchen", "family-friendly"],
+      "nightly_from": 215,
+      "min_nights": 2,
+      "currency": "GBP",
+      "description": "Family yurt · bunks for the kids · shared meadow.",
+      "images": ["assets/cabin-c-1.jpg"],
+      "channel_ids": {
+        "airbnb": "12345680"
+      }
+    }
+  ],
+
+  "channels": {
+    "direct": {
+      "enabled": true,
+      "stripe_publishable_key": "pk_test_REPLACE_ME",
+      "commission_pct": 1.4,
+      "deposit_pct": 30
+    },
+    "airbnb": {
+      "enabled": true,
+      "ical_import_per_unit": {
+        "cabin-a": "https://www.airbnb.com/calendar/ical/12345678.ics?s=SECRET",
+        "cabin-b": "https://www.airbnb.com/calendar/ical/12345679.ics?s=SECRET",
+        "cabin-c": "https://www.airbnb.com/calendar/ical/12345680.ics?s=SECRET"
+      },
+      "typical_commission_pct": 15
+    },
+    "booking_com": {
+      "enabled": true,
+      "ical_import_per_unit": {
+        "cabin-a": "https://admin.booking.com/hotel/gb/ical/9876543.ics?t=TOKEN",
+        "cabin-b": "https://admin.booking.com/hotel/gb/ical/9876544.ics?t=TOKEN"
+      },
+      "typical_commission_pct": 18
+    },
+    "agoda": {
+      "enabled": false,
+      "ical_import_per_unit": {}
+    },
+    "whatsapp": {
+      "enabled": true,
+      "provider": "twilio",
+      "sender_number": "+441234567890"
+    },
+    "email": {
+      "enabled": true,
+      "provider": "resend",
+      "from_address": "bookings@samplestay.co.uk",
+      "reply_to": "bookings@samplestay.co.uk"
+    },
+    "sms": {
+      "enabled": false,
+      "provider": "twilio",
+      "sender_number": ""
+    },
+    "instagram_dm": { "enabled": false, "account_id": "" },
+    "facebook_messenger": { "enabled": false, "page_id": "" }
+  },
+
+  "ai": {
+    "provider": "webllm",
+    "provider_options": ["webllm", "anthropic", "openai"],
+    "voice_hint": "Warm, brief (2-3 sentences), always moves toward booking or clear next step. Never invents information.",
+    "auto_draft": true,
+    "auto_send": false,
+    "temperature": 0.6
+  },
+
+  "operator": {
+    "name": "Jane Sample",
+    "email": "jane@samplestay.co.uk",
+    "voice_persona": "9 years hosting · direct · gently witty · never salesy",
+    "checkin_time": "16:00",
+    "checkout_time": "10:00",
+    "quiet_hours": "22:00-08:00",
+    "instant_book": true,
+    "review_response_target_hours": 24
+  },
+
+  "policies": {
+    "cancellation": "Full refund if cancelled 30+ days before arrival. 50% if 14-29 days. Non-refundable within 14 days.",
+    "damage_deposit_gbp": 100,
+    "children": true,
+    "dogs": true,
+    "smoking": false,
+    "parties": false
+  },
+
+  "legal": {
+    "business_registered_name": "SampleStay Ltd",
+    "companies_house_number": "12345678",
+    "vat_number": null,
+    "terms_url": "/terms.html",
+    "privacy_url": "/privacy.html",
+    "insurance_provider": "Public liability insurance held with <insurer>"
+  }
+}

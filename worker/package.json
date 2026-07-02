@@ -1,0 +1,17 @@
+{
+  "name": "onehub-worker",
+  "version": "0.1.0",
+  "description": "OneHub Cloudflare Worker · webhooks + AI draft + iCal aggregator",
+  "type": "module",
+  "main": "index.mjs",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "seed-config": "wrangler kv:key put --binding=ONEHUB_STATE 'config' --path=../config/onehub.config.json"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  },
+  "license": "MIT",
+  "author": "Simon Gant · AI Native Solutions"
+}
