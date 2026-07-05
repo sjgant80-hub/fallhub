@@ -7,6 +7,9 @@ Follow these steps when ready to point the domain. Until then the `.github.io` U
 - **`ai-nativesolutions.com`** (apex) → `sjgant80-hub.github.io/fallhub/` — corporate homepage
 - **`www.ai-nativesolutions.com`** → same as apex
 - **`install.ai-nativesolutions.com`** → `sjgant80-hub.github.io/fallforge/` — the FallForge concierge
+- **`roost.ai-nativesolutions.com`** → `sjgant80-hub.github.io/roost/` — hospitality showroom
+- **`adshop.ai-nativesolutions.com`** → `sjgant80-hub.github.io/adshop/` — creative-agency showroom
+- **`trades.ai-nativesolutions.com`** → `sjgant80-hub.github.io/tradeshub/` — trades showroom (shipping next)
 
 ## Step 1 · Add DNS records at your registrar
 
@@ -34,30 +37,34 @@ Type    Name    Value
 CNAME   install sjgant80-hub.github.io
 ```
 
+For the showroom subdomains (add each as its own CNAME):
+
+```
+Type    Name     Value
+CNAME   roost    sjgant80-hub.github.io
+CNAME   adshop   sjgant80-hub.github.io
+CNAME   trades   sjgant80-hub.github.io
+```
+
 ## Step 2 · Wait for DNS propagation (5-30 min)
 
 Verify with: `dig ai-nativesolutions.com +short` — should return the four GitHub IPs.
 
-## Step 3 · Restore the CNAME files in the repos
+## Step 3 · Restore the CNAME files (one-shot script)
 
-In this repo (fallhub):
-
-```bash
-cd C:\Users\sjgan\Downloads\onehub
-echo "ai-nativesolutions.com" > CNAME
-git add CNAME
-git commit -m "Point ai-nativesolutions.com at FallHub"
-git push
-```
-
-In the fallforge repo:
+After DNS has propagated, paste this whole block into your terminal — it restores every CNAME in one go:
 
 ```bash
-cd C:\Users\sjgan\Downloads\fallforge
-echo "install.ai-nativesolutions.com" > CNAME
-git add CNAME
-git commit -m "Point install.ai-nativesolutions.com at FallForge"
-git push
+# fallhub → apex
+cd /c/Users/sjgan/Downloads/onehub && echo "ai-nativesolutions.com" > CNAME && git add CNAME && git commit -m "Point ai-nativesolutions.com at FallHub" && git push
+# fallforge → install subdomain
+cd /c/Users/sjgan/Downloads/fallforge && echo "install.ai-nativesolutions.com" > CNAME && git add CNAME && git commit -m "Point install.ai-nativesolutions.com at FallForge" && git push
+# roost → hospitality showroom
+cd /c/Users/sjgan/Downloads/roost && echo "roost.ai-nativesolutions.com" > CNAME && git add CNAME && git commit -m "Point roost.ai-nativesolutions.com at Roost" && git push
+# adshop → creative-agency showroom
+cd /c/Users/sjgan/Downloads/adshop && echo "adshop.ai-nativesolutions.com" > CNAME && git add CNAME && git commit -m "Point adshop.ai-nativesolutions.com at AdShop" && git push
+# tradeshub → trades showroom
+cd /c/Users/sjgan/Downloads/tradeshub && echo "trades.ai-nativesolutions.com" > CNAME && git add CNAME && git commit -m "Point trades.ai-nativesolutions.com at TradesHub" && git push
 ```
 
 ## Step 4 · Enable HTTPS in GitHub Pages settings
