@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hospitality vertical · FallHub</title>
+<meta name="description" content="FallHub for holiday rentals, glamping, B&Bs, boutique hotels. Live reference: Wishwood — a real cottage running FallHub in production.">
+<meta name="theme-color" content="#0b0a0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a0f'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%23b8974a' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+
+<main class="wide">
+
+<section class="hero">
+  <div class="tag"><span class="glyph">◊</span> Vertical · Hospitality · Live reference</div>
+  <h1>For hospitality. <em>Wishwood-proven.</em></h1>
+  <p class="lede">Holiday rentals · glamping · B&Bs · boutique hotels · shepherd's huts · treehouse retreats · yurts. FallHub's hospitality vertical runs live at Wishwood — a real cottage taking real bookings. Every improvement flows both ways.</p>
+  <div class="cta">
+    <a href="https://sjgant80-hub.github.io/wishwood/" target="_blank" class="btn brass">See Wishwood live</a>
+    <a href="../setup.html" class="btn ghost">Deploy your own</a>
+    <a href="https://sjgant80-hub.github.io/wishwood/sim.html" target="_blank" class="btn ghost">Try the sim</a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The vertical config</span>
+  <h2>The kernel · <em>what the AI knows.</em></h2>
+  <div class="split">
+    <div>
+      <p>Every hospitality kernel encodes: property facts, explicit <em>not-present</em> list (anti-hallucination), voice tone from your best replies, check-in / checkout / cancellation / pet / children / smoking policies, operational instructions (WiFi, arrival, checkout), competitor set, seasonality, review distillation, financial baseline.</p>
+      <p>The AI can only assert things the kernel supports. If a guest asks "do you have a hot tub?" and the kernel says <code>not_present: ["hot tub"]</code>, the AI cannot invent one.</p>
+    </div>
+    <div>
+      <pre><span class="c">// wishwood kernel · abridged</span>
+{
+  <span class="k">"property"</span>: {
+    <span class="k">"name"</span>: <span class="s">"Wishwood"</span>,
+    <span class="k">"type"</span>: <span class="s">"cottage"</span>,
+    <span class="k">"sleeps"</span>: 6,
+    <span class="k">"amenities"</span>: [
+      <span class="s">"wifi"</span>, <span class="s">"log burner"</span>,
+      <span class="s">"garden"</span>, <span class="s">"parking"</span>
+    ],
+    <span class="k">"not_present"</span>: [
+      <span class="s">"hot tub"</span>,
+      <span class="s">"swimming pool"</span>,
+      <span class="s">"sauna"</span>
+    ]
+  },
+  <span class="k">"voice"</span>: {
+    <span class="k">"tone"</span>: <span class="s">"warm"</span>,
+    <span class="k">"banned_phrases"</span>: [
+      <span class="s">"at your earliest convenience"</span>
+    ]
+  }
+}</pre>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The tools</span>
+  <h2>Verbs registered in the <em>hospitality template.</em></h2>
+  <div class="grid grid-3">
+    <div class="card"><h4>get_availability</h4><p style="font-size:13.5px">Read booked/free nights. Read-only. Always auto.</p><span class="pill good">Always auto</span></div>
+    <div class="card"><h4>quote_stay</h4><p style="font-size:13.5px">Quote a stay with seasonal pricing + fees. Auto-low tier.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>send_reply</h4><p style="font-size:13.5px">Send message to guest on any channel. Confidence-gated.</p><span class="pill">Confidence gate</span></div>
+    <div class="card"><h4>set_price</h4><p style="font-size:13.5px">Adjust nightly price. ±15% auto-med, more escalates.</p><span class="pill warn">Auto-med</span></div>
+    <div class="card"><h4>update_listing</h4><p style="font-size:13.5px">Edit an OTA listing field. 5min undo window.</p><span class="pill ox">Auto-med only</span></div>
+    <div class="card"><h4>create_task</h4><p style="font-size:13.5px">Assign work to housekeeper, maintenance, owner. Always auto.</p><span class="pill good">Always auto</span></div>
+    <div class="card"><h4>flag_for_human</h4><p style="font-size:13.5px">Escalate. Halts on the action-class until resolved.</p><span class="pill good">Always available</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The personas</span>
+  <h2>Ten archetypes · <em>twelve scenarios.</em></h2>
+  <p>Baseline persona set the training simulator uses. Every hospitality operator customises this list from their own review data during setup.</p>
+  <div class="grid grid-2" style="margin-top:14px">
+    <div class="card">
+      <h4>Personas</h4>
+      <ul style="padding-left:18px">
+        <li>Anxious first-timer · over-plans, asks many questions</li>
+        <li>Romantic getaway · special touches, budget flexible</li>
+        <li>Multi-generational family · accessibility needs</li>
+        <li>Business stopover · wifi obsessed, quiet workspace</li>
+        <li>The complainer · finds issues, threatens reviews</li>
+        <li>Digital nomads · long stay, remote-work rig</li>
+        <li>Party risk · friends, may test quiet hours</li>
+        <li>Solo older · prefers calls, warm and courteous</li>
+        <li>Influencer · wants comped stay for content</li>
+        <li>Pet owner · checks pet policy</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Scenarios (weighted probability)</h4>
+      <ul style="padding-left:18px">
+        <li>Availability inquiry · 30%</li>
+        <li>Booking confirm · 20%</li>
+        <li>Price question · 15%</li>
+        <li>Pet policy · 12%</li>
+        <li>Arrival code / instructions · 10%</li>
+        <li>Cancellation request · 8%</li>
+        <li>Cleanliness complaint · 6%</li>
+        <li>Broken amenity report · 5%</li>
+        <li>Review thank-you · 5%</li>
+        <li>Left item recovery · 4%</li>
+        <li>Noise complaint from neighbour · 3%</li>
+        <li>House rule boundary test · 3%</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Live reference · Wishwood</span>
+  <h2>Not a demo · <em>a real cottage.</em></h2>
+  <div class="card raised">
+    <p>Wishwood is the R&D lab for the FallHub hospitality vertical. Real property. Real bookings. Real complaints. Real Chrissy learning the ropes on the training simulator before touching a real guest. Every improvement built for Wishwood flows straight into the vertical template · every deployment of the hospitality template inherits it.</p>
+
+    <div class="grid grid-3" style="margin-top:20px">
+      <a href="https://sjgant80-hub.github.io/wishwood/" target="_blank" class="module-card">
+        <div class="m-head"><h4>Hub</h4><span class="pill good">Live</span></div>
+        <div class="m-desc">Operator surface. Inbox, calendar, autopilot pill.</div>
+      </a>
+      <a href="https://sjgant80-hub.github.io/wishwood/autopilot.html" target="_blank" class="module-card">
+        <div class="m-head"><h4>Autopilot</h4><span class="pill good">Live</span></div>
+        <div class="m-desc">BYOK config, kernel viewer, autonomy dial, event stream.</div>
+      </a>
+      <a href="https://sjgant80-hub.github.io/wishwood/sim.html" target="_blank" class="module-card">
+        <div class="m-head"><h4>Training sim</h4><span class="pill good">Live</span></div>
+        <div class="m-desc">WebLLM-driven fake guests. Practice before real ones arrive.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Setup for hospitality</span>
+  <h2>Live in <em>under 60 minutes.</em></h2>
+  <div class="step">
+    <span class="n">1</span>
+    <h4>Fork FallHub · pick hospitality template</h4>
+    <p>Fork <a href="https://github.com/sjgant80-hub/onehub" target="_blank">the repo</a>. Rename to your property. GitHub Pages auto-deploys.</p>
+  </div>
+  <div class="step">
+    <span class="n">2</span>
+    <h4>Fill the kernel</h4>
+    <p>Property name, sleeps, bedrooms, bathrooms, amenities, <strong>not_present list</strong> (critical), voice tone, policies, WiFi, arrival instructions. About 15 minutes.</p>
+  </div>
+  <div class="step">
+    <span class="n">3</span>
+    <h4>Add BYOK · run harvest</h4>
+    <p>Paste an API key. Click Harvest. Kernel enriches with your review distillation + competitor set + local weather. ~5 min.</p>
+  </div>
+  <div class="step">
+    <span class="n">4</span>
+    <h4>Practice on the sim · slide the dial</h4>
+    <p>Download WebLLM (~4GB, one-time). Run a wave of fake guests. Practice until confident. Slide the autonomy dial from Watch → Suggest → Auto-Low.</p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Modules commonly installed on hospitality</span>
+  <h2>The stack most cottages <em>run.</em></h2>
+  <div class="grid grid-3">
+    <div class="module-card"><div class="m-head"><h4>FallSecurity</h4><span class="pill mit">MIT</span></div><div class="m-desc">GDPR for guest data. Booking consent flow. DPIA templates.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallAccount</h4><span class="pill mit">MIT</span></div><div class="m-desc">Nightly-rate tracker. Turnover cost. VAT if registered.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallReach</h4><span class="pill mit">MIT</span></div><div class="m-desc">Post-stay review nudges. Social content scheduler.</div></div>
+    <div class="module-card"><div class="m-head"><h4>Botler</h4><span class="pill mit">MIT</span></div><div class="m-desc">Free local LLM for the sim + drafting.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallBrief</h4><span class="pill mit">MIT</span></div><div class="m-desc">Cancellation policy compliance. Consumer rights nuance.</div></div>
+    <div class="module-card"><div class="m-head"><h4>Cassie Oracle</h4><span class="pill mit">MIT</span></div><div class="m-desc">Competitor price watch. Weekly report on Airbnb-adjacent listings.</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Roost · hospitality showroom</span>
+  <h2>Buy in through <em>Roost.</em></h2>
+  <p>Roost is the hospitality-specific showroom for FallHub. Property owners see the Wishwood reference implementation, browse compatible modules, book a Pro setup where we deploy for you within 48 hours.</p>
+  <div class="cta">
+    <a href="https://sjgant80-hub.github.io/roost/" target="_blank" class="btn brass">Visit Roost</a>
+    <a href="https://sjgant80-hub.github.io/wishwood/" target="_blank" class="btn ghost">See Wishwood live</a>
+    <a href="../clients.html" class="btn ghost">Or book Pro setup direct</a>
+  </div>
+</section>
+
+</main>
+
+<script defer src="../assets/nav.js"></script>
+</body>
+</html>

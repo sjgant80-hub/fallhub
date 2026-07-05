@@ -1,119 +1,128 @@
-# OneHub
+# FallHub
 
-**Sovereign direct-booking + unified inbox + AI reply drafting for independent stay operators.**
+**Sovereign AI-first operating system for any small-to-medium business.**
 
-Fork one repo · edit one config · live in a day. No monthly SaaS.
+One codebase. Any vertical. Bring your own AI. MIT-licensed. Wishwood-tested in production.
 
-**Live case study:** https://sjgant80-hub.github.io/wishwood/  · [Wishwood story →](case-studies/wishwood.html)
-
-**Landing:** https://sjgant80-hub.github.io/onehub/
+**Live:** https://sjgant80-hub.github.io/onehub/
+**Reference implementation (hospitality):** https://sjgant80-hub.github.io/wishwood/
+**Built by:** [AI-Native Solutions](https://www.ai-nativesolutions.com/) · ai-nativesolutions.com
 
 ---
 
-## For operators
+## What FallHub is
 
-Independently run a glamping site, B&B, boutique hotel, campsite, cottage, treehouse retreat, or shepherd's hut?
+FallHub is the operating layer a small business runs on. Not a website. Not a CRM. Not a chatbot. The whole thing.
 
-You're probably paying £79-£200/month for a channel manager + £25/month for a booking widget + 15% to Airbnb on every booking. That's £948+/year for tools you don't own.
+- Reads your inbox across every channel (email, WhatsApp, Airbnb, Booking, DM, SMS)
+- Drafts every reply in your voice, grounded in your business facts (kernel)
+- Sends the safe ones automatically. Queues the risky ones for you to approve.
+- Books appointments, generates quotes, sets prices, tracks deals, invoices, chases
+- Runs GDPR compliance, files reminders, drafts HMRC letters
+- Practices with fake customers so you learn without breaking anything real
+- Every action Ed25519-signed with a 30-second reversibility window
 
-OneHub replaces the channel manager, booking widget, and unified-inbox tools with one repo you fork and configure. MIT-licensed. Free tier of Cloudflare covers a small operator.
+## The 12 sockets · every FallHub build ships
 
-See [Wishwood's live setup](https://sjgant80-hub.github.io/wishwood/) for the reference operator.
+1. **BYOK adapter** across 6 LLM providers (Anthropic, OpenAI, Gemini, Groq, Mistral, WebLLM local)
+2. **Kernel grounding** with explicit `not_present` anti-hallucination list
+3. **Ed25519-signed event log** (Web Crypto, IDB + ring buffer)
+4. **Autonomy dial** (watch / suggest / auto-low / auto-med / full)
+5. **Reversibility window** on tool calls (default 30 seconds)
+6. **Training simulator** (WebLLM-driven personas + scenarios · judged replies)
+7. **`flag_for_human` escalation** (always exempt from autonomy gate)
+8. **KCC provenance mint hook** (optional per action)
+9. **MCP tool exposure** (JSON-RPC 2.0 · discoverable by external agents)
+10. **`agents.json` + `llms.txt` + `ai.html`** (AI-SEO discovery)
+11. **Data portability export** (one-click signed JSON of everything)
+12. **A2A protocol adapter** (Agent-to-Agent · scaffold now)
 
-## For developers / agencies
+## Four flagship verticals · ready today
 
-OneHub is a fork-and-configure product template. You can:
+- [Hospitality](verticals/hospitality.html) — holiday rentals, glamping, B&Bs. Live reference: [Wishwood](https://sjgant80-hub.github.io/wishwood/).
+- [Trades](verticals/trades.html) — plumbers, electricians, decorators, gas engineers.
+- [Ad firm](verticals/adshop.html) — creative agencies, brand studios, freelance strategists.
+- [Accounting](verticals/accounting.html) — bookkeeping practices, VAT, self-assessment.
 
-- Deploy for your own hospitality business (~30-60 min setup)
-- Deploy for clients as a paid service (typical rate: £599-£3,499 per deployment, see the [Fiverr G6 pricing tiers](https://github.com/sjgant80-hub/fiverr-launch-pack) for the reference commercials)
-- Fork the codebase and add features specific to your vertical
-- Skin it entirely for your own brand — the `config.brand` block covers colours, fonts, and glyph
+Plus [barbershop chain](verticals/barbershop.html) as the multi-location pattern reference.
 
-## Repo layout
+Any other niche fits the same substrate — [see the pattern](verticals.html#any-niche).
+
+## Estate module marketplace · 60+ MIT modules
+
+Every module snaps in via a shared manifest protocol. Legal research (FallBrief), accounting (FallAccount), CRM (FallCRM Elite), outreach (FallReach), GDPR (FallSecurity), agent marketplace (FallColony), and 55+ more.
+
+Browse the full marketplace at [modules.html](modules.html).
+
+## Pricing
+
+- **Sovereign** · £0 forever · fork and deploy yourself
+- **Starter** · £29/month · guided setup + email support
+- **Pro** · £199/month · done-for-you deployment + autonomy calibration
+- **Agency** · £999/month · unlimited client deployments + white-label
+
+Everything is MIT. Support tiers are optional.
+
+## Getting started
+
+### The 20-minute path
+
+1. [Fork the repo](https://github.com/sjgant80-hub/onehub/fork)
+2. Pick a vertical template (edit `ai/kernel.json`)
+3. Fill the kernel with your business facts
+4. Paste a BYOK API key at `autopilot.html`
+5. Run harvest to enrich the kernel from your online footprint
+6. Practice on the training simulator (`sim.html`)
+7. Slide the autonomy dial as trust grows
+
+Full guide: [setup.html](setup.html)
+
+### The done-for-you path
+
+Book a Pro setup: hello@ai-nativesolutions.com
+
+## Architecture
 
 ```
-onehub/
-├── index.html                             ← marketing landing
-├── ai.html                                ← AI agent dossier
-├── llms.txt                               ← llms.txt for crawlers
-├── robots.txt · sitemap.xml               ← AI-SEO surface
-├── config/
-│   └── onehub.config.example.json         ← THE config file
-├── demo/
-│   ├── hub.html                           ← operator inbox demo
-│   └── book.html                          ← guest booking demo
-├── worker/
-│   ├── index.mjs                          ← Cloudflare Worker (webhooks + AI + iCal)
-│   ├── wrangler.example.toml
-│   └── package.json
-├── case-studies/
-│   └── wishwood.html                      ← flagship testimonial
-├── docs/
-│   ├── QUICKSTART.md                      ← fork → live in 30-60 min
-│   └── CREDENTIALS-SETUP.md               ← client-onboarding checklist template
-└── README.md · LICENSE
+FallHub core (vertical-neutral MIT substrate)
+├── ai/
+│   ├── adapter.js       # BYOK adapter (6 providers)
+│   ├── agent.js         # runtime loop
+│   ├── events.js        # Ed25519-signed log
+│   ├── harvest.js       # seed harvester
+│   ├── sim.js           # training simulator
+│   ├── tools.js         # tool registry
+│   ├── kernel.schema.json
+│   └── kernel.example.json
+├── verticals/           # vertical templates
+├── modules/             # module marketplace registry
+├── autopilot.html       # BYOK config surface
+├── sim.html             # training simulator UI
+├── clients.html         # client pitch
+├── investors.html       # investor deck
+├── modules.html         # module marketplace
+├── setup.html           # getting started
+├── verticals.html       # verticals overview
+└── index.html           # landing
 ```
 
-## Quickstart
+## Konomi doctrine
 
-Read [`docs/QUICKSTART.md`](docs/QUICKSTART.md) for the full 7-step walk from fork to live domain.
+FallHub inherits from the Konomi construction tradition: the seal (◊·κ=1), the 14-point gate, the seal-chain audit pattern, the primes-of-seven spine. Every module respects this doctrine. See [FallColony](https://sjgant80-hub.github.io/fallcolony/) for the deeper Konomi curriculum.
 
-Short version:
+## Licence
 
-```bash
-git clone https://github.com/YOU/onehub.git
-cd onehub
-cp config/onehub.config.example.json config/onehub.config.json
-# edit config/onehub.config.json for your business
-cd worker
-npm install
-npx wrangler login
-npx wrangler kv:namespace create "ONEHUB_STATE"
-# paste the id into worker/wrangler.toml
-npx wrangler secret put STRIPE_SECRET_KEY
-# ... set other secrets
-npm run deploy
-cd ..
-npx wrangler kv:key put --binding=ONEHUB_STATE 'config' --path=config/onehub.config.json --config=worker/wrangler.toml
-git commit -am "my brand config" && git push
-# enable GitHub Pages in repo settings
-```
+MIT. Fork it. Modify it. Ship it. No attribution required (but appreciated).
 
-## What's in the box
+Copyright © 2026 AI-Native Solutions.
 
-| Piece | What |
-|---|---|
-| **Landing** (`index.html`) | Marketing hero + Wishwood testimonial + how it works + FAQ · single HTML |
-| **Demo Hub** (`demo/hub.html`) | Config-driven operator inbox · unified feed from Airbnb/Booking.com/WhatsApp/Direct/Email · AI draft pane |
-| **Demo Book** (`demo/book.html`) | Config-driven guest booking · Stripe checkout stub · calendar view |
-| **Worker** (`worker/index.mjs`) | Stripe webhook · WhatsApp webhook (Twilio + Meta) · email inbound · iCal aggregator · AI draft endpoint · SQLite-of-poor-man's audit chain via KV |
-| **Config template** (`config/onehub.config.example.json`) | Every operator-specific value — business, units, channels, brand, AI, policies, legal |
-| **Case study** (`case-studies/wishwood.html`) | Full Wishwood story with numbers, before/after, deployment timeline |
-| **Docs** | Quickstart · client credentials-gathering checklist |
+## Links
 
-## Deployment stack
-
-- **Frontend** · GitHub Pages (static HTML)
-- **Backend** · Cloudflare Workers (webhooks, AI proxy, iCal aggregator) · free tier fine
-- **State** · Cloudflare KV (bookings, threads, config)
-- **Payments** · Stripe direct (1.4% GBP)
-- **Comms** · Twilio / Meta Cloud (WhatsApp) · Resend / SendGrid (email)
-- **Domain** · Cloudflare DNS with GitHub Pages CNAME + Worker route
-
-Nothing else. No cloud DB, no external SaaS, no vendor lock-in.
-
-## Composition with the estate
-
-- **FallEnterprise** ([landing](https://sjgant80-hub.github.io/fallenterprise/)) · the £20k-£200k productised delivery service. If you're delivering OneHub for a mid-market or enterprise operator, FallEnterprise's Sovereign/Trained/AI-Native tiers are the pricing ladder.
-- **FallRouter** ([landing](https://sjgant80-hub.github.io/fallrouter/)) · the AI orchestrator. OneHub's `worker/index.mjs` can point its `/api/ai-draft` at FallRouter's OpenAI-compatible endpoint to get local Ollama + frontier failover.
-- **Wishwood** ([site](https://sjgant80-hub.github.io/wishwood/)) · reference operator running OneHub in production.
-
-## FAQ
-
-See the [landing page FAQ](https://sjgant80-hub.github.io/onehub/#faq) or the case study.
-
-## License
-
-MIT · © 2026 AI Native Solutions · Simon Gant
+- Landing: https://sjgant80-hub.github.io/onehub/
+- Wishwood (hospitality reference): https://sjgant80-hub.github.io/wishwood/
+- Roost (hospitality showroom): https://sjgant80-hub.github.io/roost/
+- FallColony (agent marketplace): https://sjgant80-hub.github.io/fallcolony/
+- KCC ledger: https://sjgant80-hub.github.io/fallcolony/mints/
+- Company: https://www.ai-nativesolutions.com/
 
 `◊·κ=1`

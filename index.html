@@ -3,468 +3,367 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OneHub · Sovereign Direct-Booking + Ops for Independent Stays</title>
-<meta name="description" content="Fork one repo, edit one config, get a full direct-booking site + unified inbox + AI reply drafting for your glamping, B&B, campsite, boutique hotel, or holiday cottage. No monthly SaaS. MIT licence. Wishwood tested.">
-<meta name="author" content="Simon Gant · AI Native Solutions">
+<title>FallHub · Sovereign AI-first operating system for any small business</title>
+<meta name="description" content="One codebase. Any vertical. Bring your own AI. FallHub is the sovereign OS for small-to-medium businesses. Hospitality, trades, ad firms, accounting, barbershops, and any niche — one substrate, snap-in modules, MIT.">
+<meta name="author" content="AI-Native Solutions">
 <meta name="theme-color" content="#0b0a0f">
+<meta property="og:title" content="FallHub · Sovereign AI-first OS for any small business">
+<meta property="og:description" content="One codebase. Any vertical. Bring your own AI. MIT-licensed. Wishwood-tested.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sjgant80-hub.github.io/onehub/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a0f'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%23b8974a' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
-    { "@type": "SoftwareApplication",
+    {
+      "@type": "SoftwareApplication",
       "@id": "https://sjgant80-hub.github.io/onehub/#app",
-      "name": "OneHub",
+      "name": "FallHub",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web · sovereign · offline-capable",
-      "description": "Fork-and-configure sovereign hospitality operator hub. Direct booking + unified inbox + AI reply drafting. MIT-licensed. Config-driven. Deployed via Cloudflare Worker + GitHub Pages.",
+      "description": "Sovereign AI-first operating system for any small-to-medium business. Vertical-neutral substrate with snap-in estate modules and BYOK LLM support. MIT-licensed.",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" },
-      "author": { "@type": "Person", "name": "Simon Gant" }
+      "author": { "@type": "Organization", "name": "AI-Native Solutions" },
+      "featureList": [
+        "Bring-your-own-key LLM (6 providers)",
+        "Kernel-grounded AI to prevent hallucination",
+        "Ed25519-signed action event log",
+        "Autonomy dial: watch to full autopilot",
+        "In-browser training simulator (WebLLM)",
+        "60+ snap-in estate modules"
+      ]
     },
-    { "@type": "Organization",
-      "name": "AI Native Solutions",
-      "url": "https://www.ai-nativesolutions.com/"
+    {
+      "@type": "Organization",
+      "@id": "https://www.ai-nativesolutions.com/#org",
+      "name": "AI-Native Solutions",
+      "url": "https://www.ai-nativesolutions.com/",
+      "description": "Sovereign AI-first substrate for small-to-medium businesses. Konomi-doctrine ownership. MIT-licensed estate."
     }
   ]
 }
 </script>
-<style>
-:root{
-  --ox:#8b1a1a;--ox2:#a12020;--brass:#b8974a;--brass2:#d4b366;
-  --cream:#c4bfb2;--creamL:#e8e4db;
-  --void:#0b0a0f;--void2:#14131a;--panel:#1a1922;--panel2:#22212c;
-  --line:#2a2934;--line2:#3a3846;
-  --ink:#e8e4db;--dim:#8a857a;--muted:#5a5750;
-  --green:#4a8a5a;--greenL:#8ce0a5;
-  --red:#c8402a;
-  --serif:'Libre Baskerville',Georgia,serif;
-  --sans:'DM Sans',system-ui,sans-serif;
-  --mono:'IBM Plex Mono',Consolas,monospace;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:var(--sans);background:var(--void);color:var(--ink);font-size:15px;line-height:1.55;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(139,26,26,.06),transparent 40%),radial-gradient(circle at 80% 70%,rgba(184,151,74,.05),transparent 45%);pointer-events:none;z-index:0}
-body::after{content:"";position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05 0 0 0 0 .05 0 0 0 0 .05 0 0 0 .28 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.35;pointer-events:none;z-index:0;mix-blend-mode:overlay}
-main,header,footer,section{position:relative;z-index:1}
-a{color:var(--brass2);text-decoration:none}
-a:hover{color:var(--brass);text-decoration:underline;text-underline-offset:3px}
-h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;color:var(--creamL)}
-h1{font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.1;margin-bottom:.5em}
-h2{font-size:clamp(1.6rem,3.2vw,2.2rem);line-height:1.2;margin-bottom:.5em}
-h3{font-size:1.15rem;font-weight:700;margin-bottom:.4em;color:var(--brass2)}
-h4{font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brass);font-family:var(--mono);margin-bottom:.5em}
-p{margin-bottom:.9em}
-.container{max-width:1180px;margin:0 auto;padding:0 24px}
-.mono{font-family:var(--mono);font-size:.85em;letter-spacing:.02em}
-.dim{color:var(--dim)}
-
-/* header */
-header{position:sticky;top:0;z-index:50;background:rgba(11,10,15,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1400px;margin:0 auto;gap:20px}
-.brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.15rem;color:var(--creamL);font-weight:700}
-.brand-mark{width:26px;height:26px;display:grid;place-items:center;color:var(--brass);font-size:1.3rem}
-.nav-links{display:flex;gap:22px;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
-.nav-links a{color:var(--dim)}
-.nav-links a:hover{color:var(--brass);text-decoration:none}
-.nav-cta{padding:9px 18px;background:var(--ox);color:var(--creamL);border-radius:2px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:background .15s}
-.nav-cta:hover{background:var(--ox2);color:var(--creamL);text-decoration:none}
-@media(max-width:820px){.nav-links{display:none}}
-
-/* hero */
-.hero{padding:88px 0 72px}
-.hero-eyebrow{font-family:var(--mono);color:var(--brass);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:20px}
-.hero h1{max-width:920px}
-.hero h1 em{font-style:italic;color:var(--brass2)}
-.hero-sub{font-size:1.15rem;color:var(--dim);max-width:720px;margin-bottom:36px;line-height:1.6}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px}
-.btn{padding:14px 26px;font-family:var(--sans);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;border-radius:2px;display:inline-flex;align-items:center;gap:8px;transition:filter .15s,transform .1s}
-.btn:hover{filter:brightness(1.1);text-decoration:none}
-.btn:active{transform:translateY(1px)}
-.btn-primary{background:var(--ox);color:var(--creamL)}
-.btn-secondary{background:transparent;color:var(--brass2);border:1px solid var(--brass)}
-.hero-strap{display:flex;gap:34px;flex-wrap:wrap;color:var(--dim);font-size:.85rem;font-family:var(--mono)}
-.hero-strap span{display:flex;align-items:center;gap:8px}
-.hero-strap span::before{content:"◆";color:var(--brass);font-size:.7rem}
-
-/* section */
-section.section{padding:72px 0;border-top:1px solid var(--line)}
-.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:44px;flex-wrap:wrap}
-.section-head p{color:var(--dim);max-width:520px;margin-bottom:0}
-
-/* wishwood testimonial */
-.testimonial{
-  background:linear-gradient(135deg,var(--panel2),var(--panel));
-  border:1px solid var(--brass);
-  border-radius:4px;
-  padding:40px;
-  display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;
-}
-@media(max-width:820px){.testimonial{grid-template-columns:1fr}}
-.testimonial .quote{font-family:var(--serif);font-size:1.5rem;color:var(--creamL);line-height:1.4;font-style:italic;margin-bottom:22px}
-.testimonial .attrib{color:var(--brass2);font-family:var(--mono);font-size:.85rem;letter-spacing:.05em}
-.testimonial .attrib small{display:block;color:var(--dim);margin-top:4px;font-family:var(--sans);font-size:.9rem;letter-spacing:0}
-.testimonial-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.stat{background:var(--void2);border:1px solid var(--line);border-radius:3px;padding:20px}
-.stat-val{font-family:var(--serif);color:var(--brass2);font-size:1.8rem;line-height:1;margin-bottom:4px}
-.stat-label{font-family:var(--mono);font-size:.72rem;color:var(--dim);letter-spacing:.08em;text-transform:uppercase}
-.testimonial-cta{margin-top:22px}
-
-/* how it works */
-.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:920px){.how-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.how-grid{grid-template-columns:1fr}}
-.step{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:24px 22px;position:relative}
-.step-num{font-family:var(--mono);color:var(--brass);font-size:.75rem;letter-spacing:.15em;margin-bottom:10px}
-.step h4{font-family:var(--serif);text-transform:none;letter-spacing:0;color:var(--creamL);font-size:1rem;margin-bottom:8px}
-.step p{font-size:.85rem;color:var(--dim);margin-bottom:0;line-height:1.5}
-
-/* what you get */
-.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
-.feat{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:22px}
-.feat h3{color:var(--brass2);font-family:var(--serif);text-transform:none;letter-spacing:0;margin-bottom:6px;font-size:1.05rem}
-.feat p{color:var(--dim);font-size:.88rem;margin-bottom:0}
-
-/* config example */
-.config{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:24px;font-family:var(--mono);font-size:.82rem;color:var(--cream);overflow-x:auto;line-height:1.65}
-.config .k{color:var(--brass2)}
-.config .s{color:var(--greenL)}
-.config .n{color:var(--brass)}
-.config .c{color:var(--dim);font-style:italic}
-
-/* deploy */
-.deploy-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-@media(max-width:820px){.deploy-grid{grid-template-columns:1fr}}
-.deploy-box{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:26px}
-.deploy-box h3{font-family:var(--serif);color:var(--creamL);text-transform:none;letter-spacing:0;font-size:1.1rem;margin-bottom:10px}
-.deploy-box code{background:var(--void2);color:var(--brass2);padding:2px 6px;border-radius:2px;font-family:var(--mono);font-size:.85em}
-.deploy-box pre{background:var(--void2);border:1px solid var(--line);border-radius:3px;padding:12px 14px;margin:10px 0;font-family:var(--mono);font-size:.78rem;color:var(--cream);overflow-x:auto;line-height:1.55}
-.deploy-box ul{padding-left:20px;font-size:.9rem;color:var(--cream)}
-.deploy-box li{margin-bottom:6px}
-
-/* verticals */
-.verticals{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.vertical{padding:8px 16px;background:var(--void2);border:1px solid var(--line);color:var(--brass2);font-size:.82rem;border-radius:2px;font-family:var(--mono);letter-spacing:.03em}
-
-/* faq */
-.faq-grid{display:grid;gap:10px}
-.faq-item{background:var(--panel);border:1px solid var(--line);border-radius:3px;overflow:hidden}
-.faq-q{padding:18px 22px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:var(--serif);font-size:1rem;color:var(--creamL);user-select:none}
-.faq-q::after{content:"+";color:var(--brass);font-size:1.4rem;transition:transform .2s}
-.faq-item.open .faq-q::after{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
-.faq-item.open .faq-a{max-height:600px}
-.faq-a-inner{padding:0 22px 22px;color:var(--dim);font-size:.9rem;line-height:1.65}
-
-/* footer */
-footer{border-top:1px solid var(--line);padding:36px 0;color:var(--dim);font-size:.85rem;margin-top:40px}
-.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:36px;margin-bottom:26px}
-@media(max-width:640px){.foot-grid{grid-template-columns:1fr}}
-.foot-col h4{margin-bottom:12px;color:var(--brass);font-size:.75rem}
-.foot-col a{display:block;padding:4px 0;color:var(--dim)}
-.foot-col a:hover{color:var(--brass2);text-decoration:none}
-.foot-legal{border-top:1px solid var(--line);padding-top:20px;text-align:center;font-family:var(--mono);font-size:.75rem;color:var(--muted);letter-spacing:.05em}
-</style>
 </head>
 <body>
 
-<header>
-  <div class="nav">
-    <a class="brand" href="#top"><span class="brand-mark">◊</span>OneHub</a>
-    <nav class="nav-links">
-      <a href="#testimonial">Case Study</a>
-      <a href="#how">How it works</a>
-      <a href="#config">Config</a>
-      <a href="#deploy">Deploy</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <a href="https://github.com/sjgant80-hub/onehub" class="nav-cta">Fork on GitHub</a>
-  </div>
-</header>
+<main class="wide">
 
-<main id="top">
-
-<section class="hero container">
-  <div class="hero-eyebrow">◆ Sovereign hospitality operator hub · MIT · fork-and-configure</div>
-  <h1>Your booking site, unified inbox, and AI replies. <em>One repo. One config. Live in a day.</em></h1>
-  <p class="hero-sub">If you run a glamping site, B&B, boutique hotel, campsite, or holiday cottage — you're paying £100-£300/month for a channel manager, a booking widget, and an AI inbox that reads your guests' messages. OneHub replaces all three with one repo you own. Fork it, edit one config file, deploy to Cloudflare (free tier). Live testimonial below.</p>
-  <div class="hero-ctas">
-    <a href="https://sjgant80-hub.github.io/wishwood/" target="_blank" class="btn btn-primary">See the live operator (Wishwood)</a>
-    <a href="https://github.com/sjgant80-hub/onehub" class="btn btn-secondary">Fork the repo</a>
-  </div>
-  <div class="hero-strap">
-    <span>MIT licence · yours forever</span>
-    <span>No monthly SaaS fee</span>
-    <span>~1 day config-to-live</span>
-    <span>Cloudflare free tier</span>
+<section class="hero">
+  <div class="tag"><span class="glyph">◊</span> AI-Native Solutions · Konomi doctrine · ◊·κ=1</div>
+  <h1>The sovereign OS for <em>any small business.</em></h1>
+  <p class="lede">One codebase. Any vertical. Bring your own AI. FallHub is the AI-first substrate a small-to-medium business runs on — hospitality, trades, ad firm, accounting, barbershop chain, or any niche. Snap in 60+ estate modules to add the capabilities you need. Own your data. Own your keys. MIT-licensed.</p>
+  <div class="cta">
+    <a href="verticals.html" class="btn">See the verticals</a>
+    <a href="setup.html" class="btn ghost">Get started in 20 min</a>
+    <a href="https://sjgant80-hub.github.io/wishwood/" target="_blank" class="btn ghost">Live proof · Wishwood</a>
   </div>
 </section>
 
-<!-- ─── WISHWOOD TESTIMONIAL ─────────────────────────────── -->
-<section class="section" id="testimonial">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h4>Live case study</h4>
-        <h2>Wishwood · Kent · running on OneHub today.</h2>
-      </div>
-      <p>Wishwood Glamping & Forestry runs the whole OneHub stack on a real property near Canterbury. This is the reference operator — everything you see there is what you get when you fork.</p>
-    </div>
-
-    <div class="testimonial">
-      <div>
-        <div class="quote">"We were paying Hostaway £79 a month, plus a booking widget on top, plus we had messages coming in from Airbnb, Booking, WhatsApp, and email — I was refreshing four tabs every morning. Simon shipped us one hub that pulls it all in. AI drafts my replies in my voice. I own the whole thing forever."</div>
-        <div class="attrib">Chrissy · Wishwood Glamping & Forestry
-          <small>9 years hosting · 4.81★ across 4 units · Kent, UK</small>
-        </div>
-        <div class="testimonial-cta">
-          <a href="https://sjgant80-hub.github.io/wishwood/" target="_blank" class="btn btn-secondary">Visit Wishwood site →</a>
-        </div>
-      </div>
-      <div class="testimonial-stats">
-        <div class="stat"><div class="stat-val">£0/mo</div><div class="stat-label">SaaS eliminated</div></div>
-        <div class="stat"><div class="stat-val">£948/yr</div><div class="stat-label">Saved vs Hostaway</div></div>
-        <div class="stat"><div class="stat-val">1.4%</div><div class="stat-label">Direct-book Stripe fee</div></div>
-        <div class="stat"><div class="stat-val">4 units</div><div class="stat-label">Synced across 4 channels</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── HOW IT WORKS ─────────────────────────────────────── -->
-<section class="section" id="how">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h4>How it works</h4>
-        <h2>Four steps. One day. Config beats code.</h2>
-      </div>
-      <p>OneHub is one static-HTML frontend + one Cloudflare Worker + one config file. Everything an operator would customise lives in the config — not the code.</p>
-    </div>
-    <div class="how-grid">
-      <div class="step">
-        <div class="step-num">STEP 1</div>
-        <h4>Fork the repo</h4>
-        <p>Click Fork on GitHub. You now have your own copy at <code>github.com/you/onehub</code>. MIT licence · yours forever.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">STEP 2</div>
-        <h4>Edit one config</h4>
-        <p>Open <code>config/onehub.config.json</code>. Change business name, units, prices, brand colours, channel iCal URLs. Save.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">STEP 3</div>
-        <h4>Deploy the Worker</h4>
-        <p>Run <code>npm run deploy</code>. Cloudflare Workers publishes your webhook endpoint. Free tier easily covers a small operator.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">STEP 4</div>
-        <h4>Enable Pages</h4>
-        <p>Switch GitHub Pages on for the repo. Book page + Hub page go live at <code>your-brand.github.io/onehub/</code>. Point your domain at it.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── WHAT YOU GET ─────────────────────────────────────── -->
 <section class="section">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h4>What you get</h4>
-        <h2>The whole ops stack in one repo.</h2>
-      </div>
-      <p>Every one of these is single-file, config-driven, and forkable. No hidden dependencies.</p>
+  <span class="section-eyebrow">Explain like I'm 12</span>
+  <h2>What FallHub is · <em>plain words</em></h2>
+  <div class="split">
+    <div>
+      <p><strong>Every small business has the same problems:</strong> answer customers, take bookings or orders, chase money, keep records, follow rules, stay found on Google.</p>
+      <p>Today most businesses solve those problems by <strong>renting software from 5 to 15 different companies</strong>, paying every month, and hoping the different tools talk to each other (they don't). When a new AI comes out, you have to wait for each of those companies to add it.</p>
+      <p><strong>FallHub flips that.</strong> One codebase you own. It's the "brain" for your business. You point any AI you want at it (ChatGPT, Claude, Gemini, or a free one running on your own computer). You snap in extra powers from a marketplace of modules — like phone apps but for your business.</p>
+      <p>When a new AI comes out, you just point at it. When you want more powers, you install another module. Nobody can shut you down. Nobody sees your customer data. You keep every penny.</p>
     </div>
-    <div class="feats">
-      <div class="feat"><h3>Direct booking page</h3><p>Branded to you. Stripe integration (1.4% only, no monthly). Calendar view. Confirmation emails.</p></div>
-      <div class="feat"><h3>Unified inbox hub</h3><p>Messages from Booking.com, Airbnb, WhatsApp, Instagram, email — all in one feed. Reply once, sends everywhere.</p></div>
-      <div class="feat"><h3>iCal aggregator</h3><p>Multi-channel calendar sync in both directions. No double-bookings across Airbnb / Booking / direct.</p></div>
-      <div class="feat"><h3>AI reply drafting</h3><p>Draft replies in your voice using Claude, GPT, or browser-native WebLLM (free fallback). You approve every send.</p></div>
-      <div class="feat"><h3>Stripe payments</h3><p>Direct bookings pay you direct. Deposits, holds, refunds. Webhook-driven confirmations.</p></div>
-      <div class="feat"><h3>Guest CRM</h3><p>Every guest's stays, preferences, communication history. Search and filter. Export as JSON.</p></div>
-      <div class="feat"><h3>Admin dashboard</h3><p>Change prices, block dates, add units, edit brand — all from a browser. No code touched.</p></div>
-      <div class="feat"><h3>Setup wizard</h3><p>Ship OneHub to a client operator with the pre-built credentials setup page (see Wishwood's).</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── CONFIG EXAMPLE ─────────────────────────────────── -->
-<section class="section" id="config">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h4>The config file</h4>
-        <h2>Every operator-specific thing lives here.</h2>
-      </div>
-      <p>Edit this one file to rebrand OneHub for any operator. Full example at <a href="https://github.com/sjgant80-hub/onehub/blob/main/config/onehub.config.example.json">config/onehub.config.example.json</a>.</p>
-    </div>
-    <div class="config">
-<span class="c">// onehub.config.json · edit this file, everything else follows</span>
-{
-  <span class="k">"business"</span>: {
-    <span class="k">"name"</span>: <span class="s">"Wishwood Glamping & Forestry"</span>,
-    <span class="k">"tagline"</span>: <span class="s">"Off-grid huts, ancient Kent woodland"</span>,
-    <span class="k">"location"</span>: <span class="s">"Calcott, near Canterbury, Kent, UK"</span>,
-    <span class="k">"contact"</span>: {
-      <span class="k">"email"</span>: <span class="s">"bookings@wishwood.co.uk"</span>,
-      <span class="k">"phone"</span>: <span class="s">"+44..."</span>
-    }
-  },
-  <span class="k">"brand"</span>: {
-    <span class="c">// or use a preset: "woodland" | "coastal" | "urban" | "boutique"</span>
-    <span class="k">"palette"</span>: <span class="s">"woodland"</span>,
-    <span class="k">"fonts"</span>: { <span class="k">"serif"</span>: <span class="s">"Cormorant Garamond"</span>, <span class="k">"sans"</span>: <span class="s">"Inter"</span> },
-    <span class="k">"logo_glyph"</span>: <span class="s">"◊"</span>
-  },
-  <span class="k">"units"</span>: [
-    { <span class="k">"id"</span>: <span class="s">"hobbit"</span>, <span class="k">"name"</span>: <span class="s">"The Hobbit Hut"</span>, <span class="k">"sleeps"</span>: <span class="n">3</span>, <span class="k">"nightly_from"</span>: <span class="n">185</span>, <span class="k">"currency"</span>: <span class="s">"GBP"</span> },
-    { <span class="k">"id"</span>: <span class="s">"caravan"</span>, <span class="k">"name"</span>: <span class="s">"Vintage Caravan"</span>, <span class="k">"sleeps"</span>: <span class="n">2</span>, <span class="k">"nightly_from"</span>: <span class="n">245</span>, <span class="k">"currency"</span>: <span class="s">"GBP"</span> }
-  ],
-  <span class="k">"channels"</span>: {
-    <span class="k">"booking_com"</span>: { <span class="k">"ical_import"</span>: [<span class="s">"https://..."</span>] },
-    <span class="k">"airbnb"</span>: { <span class="k">"ical_import"</span>: [<span class="s">"https://..."</span>] },
-    <span class="k">"whatsapp"</span>: { <span class="k">"provider"</span>: <span class="s">"twilio"</span> },
-    <span class="k">"email"</span>: { <span class="k">"provider"</span>: <span class="s">"resend"</span>, <span class="k">"from"</span>: <span class="s">"bookings@wishwood.co.uk"</span> }
-  },
-  <span class="k">"ai"</span>: {
-    <span class="c">// leave empty to use browser-native WebLLM (free, slower)</span>
-    <span class="k">"provider"</span>: <span class="s">"anthropic"</span>,
-    <span class="k">"model"</span>: <span class="s">"claude-opus-4-8"</span>,
-    <span class="k">"voice_hint"</span>: <span class="s">"warm, brief, always moves toward booking"</span>
-  }
-}
+    <div class="card raised">
+      <h3>The three pieces</h3>
+      <ol style="padding-left:22px">
+        <li><strong>The brain (kernel).</strong> A short file that tells the AI what your business is: what you sell, your policies, your voice. Grounds every AI reply so it can't make stuff up.</li>
+        <li><strong>The verbs (tools).</strong> What the AI is allowed to <em>do</em>: take bookings, send messages, adjust prices, escalate to you. Each verb has a safety dial.</li>
+        <li><strong>The autonomy dial.</strong> Slide from <em>Watch</em> (AI narrates, you decide) up to <em>Full</em> autopilot as you learn to trust it.</li>
+      </ol>
+      <p style="margin-top:12px;font-size:13.5px;color:var(--dim);font-style:italic">That's the whole product. Everything else is a module you snap in.</p>
     </div>
   </div>
 </section>
 
-<!-- ─── DEPLOY ───────────────────────────────────────────── -->
-<section class="section" id="deploy">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h4>Deploy in ~30 minutes</h4>
-        <h2>Cloudflare Worker + GitHub Pages. Free tier.</h2>
-      </div>
-      <p>Two commands, one config, one DNS record.</p>
+<section class="section">
+  <span class="section-eyebrow">Four flagship verticals · any niche fits</span>
+  <h2>Ready-to-configure <em>vertical templates.</em></h2>
+  <p>Each vertical is a 20-line config on top of the FallHub core. Same runtime · different kernel, different tools, different customer personas. Pick one below or <a href="verticals.html">see how any other niche fits</a>.</p>
+
+  <div class="grid grid-4" style="margin-top:24px">
+    <a href="verticals/hospitality.html" class="vertical-card">
+      <div class="icon">◊</div>
+      <h3>Hospitality</h3>
+      <div class="desc">Holiday rentals, glamping, boutique hotels, B&Bs. Live reference: Wishwood.</div>
+      <div class="meta"><span class="pill">Live</span><span class="pill brass">Reference</span></div>
+      <span class="go">Explore</span>
+    </a>
+    <a href="verticals/trades.html" class="vertical-card">
+      <div class="icon">⚒</div>
+      <h3>Trades</h3>
+      <div class="desc">Plumbers, electricians, decorators, landscapers. Quotes, callouts, invoices, chase money.</div>
+      <div class="meta"><span class="pill">Ready</span></div>
+      <span class="go">Explore</span>
+    </a>
+    <a href="verticals/adshop.html" class="vertical-card">
+      <div class="icon">✎</div>
+      <h3>Ad firm</h3>
+      <div class="desc">Creative agencies, brand studios, freelance strategists. Clients, campaigns, deliverables.</div>
+      <div class="meta"><span class="pill">Ready</span></div>
+      <span class="go">Explore</span>
+    </a>
+    <a href="verticals/accounting.html" class="vertical-card">
+      <div class="icon">Σ</div>
+      <h3>Accounting</h3>
+      <div class="desc">Bookkeeping practices, VAT, self-assessment. HMRC calendar, chase-docs autopilot.</div>
+      <div class="meta"><span class="pill">Ready</span></div>
+      <span class="go">Explore</span>
+    </a>
+  </div>
+
+  <div class="grid grid-4" style="margin-top:16px">
+    <a href="verticals/barbershop.html" class="vertical-card">
+      <div class="icon">✂</div>
+      <h3>Barbershop chain</h3>
+      <div class="desc">Multi-location grooming. Walk-ins, loyalty, stock, staff shifts.</div>
+      <div class="meta"><span class="pill">Ready</span></div>
+      <span class="go">Explore</span>
+    </a>
+    <a href="verticals.html" class="vertical-card" style="border-style:dashed">
+      <div class="icon">?</div>
+      <h3>Any other niche</h3>
+      <div class="desc">Restaurant, gym, e-commerce, consultant, solicitor, courier, property manager, charity, coach. Same substrate. New kernel.</div>
+      <div class="meta"><span class="pill brass">Bespoke</span></div>
+      <span class="go">See how to build one</span>
+    </a>
+    <a href="modules.html" class="vertical-card">
+      <div class="icon">⊞</div>
+      <h3>Estate module marketplace</h3>
+      <div class="desc">60+ pre-built modules snap into any vertical. Legal, accounting, outreach, security, CRM.</div>
+      <div class="meta"><span class="pill good">All MIT</span></div>
+      <span class="go">Browse the marketplace</span>
+    </a>
+    <a href="https://sjgant80-hub.github.io/wishwood/sim.html" target="_blank" class="vertical-card">
+      <div class="icon">🎯</div>
+      <h3>Live simulator</h3>
+      <div class="desc">See the training sim from the reference implementation. Fake guests. Real practice.</div>
+      <div class="meta"><span class="pill good">Try now</span></div>
+      <span class="go">Open live</span>
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">How it works</span>
+  <h2>Three steps · <em>hours not months.</em></h2>
+
+  <div class="step">
+    <span class="n">1</span>
+    <h4>Fork · pick your vertical</h4>
+    <p>Fork the FallHub repo (or download a ZIP). Pick a vertical template — hospitality, trades, ad firm, accounting, barbershop, or bespoke. Answer the setup wizard: business name, colour, voice tone, opening hours, prices.</p>
+  </div>
+  <div class="step">
+    <span class="n">2</span>
+    <h4>Bring your own AI · harvest your kernel</h4>
+    <p>Paste an API key from Anthropic, OpenAI, Google, Groq, Mistral, or use free local Llama in your browser. Point at your existing online footprint (reviews, listings, competitors). FallHub distils it into a grounding kernel so the AI can't invent facts.</p>
+  </div>
+  <div class="step">
+    <span class="n">3</span>
+    <h4>Slide the autonomy dial as trust grows</h4>
+    <p>Start on Watch — the AI narrates what it would do, doing nothing. Practice on the training simulator with fake customers. When you trust it, slide up to Auto-Low (FAQ replies) → Auto-Med (quotes, pricing) → Full autopilot. Every action Ed25519-signed with a 30-second undo.</p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The moat · why nobody can copy this quickly</span>
+  <h2>Not another SaaS. <em>An estate.</em></h2>
+  <div class="split">
+    <div>
+      <p>Vertical SaaS players own their vertical. Fresha for barbers. Xero for accounting. HubSpot for CRM. ServiceTitan for trades. Guesty for hospitality. Each is a walled garden. Each is monthly rent. Each locks your data.</p>
+      <p>FallHub is <strong>one substrate that eats all of them</strong>. Free. MIT. Owner-controlled AI. And it inherits <strong>60+ estate modules already built</strong> — legal research (FallBrief), accounting (FallAccount), outreach (FallReach), CRM (FallCRM Elite), GDPR (FallSecurity), and dozens more.</p>
+      <p>Every module is MIT. Every module snaps into any vertical. When a new module ships in the estate, every FallHub instance can install it the same afternoon.</p>
     </div>
-    <div class="deploy-grid">
-      <div class="deploy-box">
-        <h3>1 · The Worker (webhooks)</h3>
-        <p>Handles Stripe payments, WhatsApp inbound, iCal fetching, email inbound.</p>
-        <pre>git clone https://github.com/YOU/onehub
-cd onehub
-npm install
-cp worker/wrangler.example.toml worker/wrangler.toml
-# edit worker/wrangler.toml · paste your keys
-npm run deploy:worker</pre>
-        <p style="color:var(--dim);font-size:.85rem">Worker publishes at <code>your-onehub.workers.dev</code>. Point <code>api.yourdomain.com</code> at it in Cloudflare DNS.</p>
-      </div>
-      <div class="deploy-box">
-        <h3>2 · The frontend (Pages)</h3>
-        <p>Book page, hub page, admin page — static HTML, no build step.</p>
-        <pre>cp config/onehub.config.example.json config/onehub.config.json
-# edit config/onehub.config.json for your business
-git commit -am "my config"
-git push
-# Enable GitHub Pages: Settings → Pages → main / (root)</pre>
-        <p style="color:var(--dim);font-size:.85rem">Pages publishes at <code>yourname.github.io/onehub/</code>. Point <code>yourdomain.com</code> at it.</p>
-      </div>
-    </div>
-    <div style="margin-top:24px" class="deploy-box">
-      <h3>What each page does</h3>
-      <ul>
-        <li><code>index.html</code> · your marketing home</li>
-        <li><code>book.html</code> · guest-facing booking flow with Stripe</li>
-        <li><code>hub.html</code> · your operator inbox + calendar</li>
-        <li><code>admin.html</code> · settings, brand, unit editor</li>
-        <li><code>credentials.html</code> · setup checklist for you or your client (see Wishwood's live at <a href="https://sjgant80-hub.github.io/wishwood/credentials.html" target="_blank">wishwood/credentials.html</a>)</li>
+    <div>
+      <ul class="tick-list">
+        <li><strong>Sovereignty.</strong> Never our servers. Never our tokens. Never our lock-in.</li>
+        <li><strong>Estate breadth.</strong> 60+ pre-built modules ready to snap in.</li>
+        <li><strong>BYOK.</strong> Any LLM. Any provider. Any model. Even free local.</li>
+        <li><strong>Konomi doctrine.</strong> Seal-chain audit trail (◊·κ=1). Provenance royalty economy via KCC.</li>
+        <li><strong>IRL proof.</strong> Wishwood is a real cottage taking real bookings today.</li>
+        <li><strong>Windows-first.</strong> Built where the average SMB owner actually works.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ─── VERTICALS ────────────────────────────────────────── -->
 <section class="section">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h4>Who this fits</h4>
-        <h2>Any independent stay operator.</h2>
-      </div>
-      <p>The pattern is universal: multi-channel bookings + unified guest comms + Stripe + AI drafts. Only the branding changes per vertical.</p>
+  <span class="section-eyebrow">Estate module marketplace · 60+ MIT modules</span>
+  <h2>Snap in <em>everything you need.</em></h2>
+  <p>These are just the first 9. See the <a href="modules.html">full marketplace</a>.</p>
+  <div class="grid grid-3" style="margin-top:20px">
+    <div class="module-card">
+      <div class="m-head"><h4>FallBrief</h4><span class="pill mit">MIT</span></div>
+      <div class="m-desc">Legal research · compliance drafts · GDPR checks · clause library. UK-primary, extensible.</div>
+      <div class="m-meta"><span class="pill">All verticals</span></div>
     </div>
-    <div class="verticals">
-      <span class="vertical">Glamping site</span>
-      <span class="vertical">B&B</span>
-      <span class="vertical">Boutique hotel</span>
-      <span class="vertical">Holiday cottage</span>
-      <span class="vertical">Treehouse retreat</span>
-      <span class="vertical">Campsite</span>
-      <span class="vertical">Shepherd's hut</span>
-      <span class="vertical">Yurt farm</span>
-      <span class="vertical">Guesthouse</span>
-      <span class="vertical">Cabin resort</span>
-      <span class="vertical">Farm stay</span>
-      <span class="vertical">Wild-swim retreat</span>
-      <span class="vertical">Yoga/wellness retreat</span>
+    <div class="module-card">
+      <div class="m-head"><h4>FallAccount</h4><span class="pill mit">MIT</span></div>
+      <div class="m-desc">Bookkeeping · VAT · MTD-ready · P&L timeline. Sovereign accounting for any trade.</div>
+      <div class="m-meta"><span class="pill">All verticals</span></div>
+    </div>
+    <div class="module-card">
+      <div class="m-head"><h4>FallCRM Elite</h4><span class="pill mit">MIT</span></div>
+      <div class="m-desc">Contacts · pipeline · deals · notes · signal-based timelines. The CRM for people who hate CRMs.</div>
+      <div class="m-meta"><span class="pill">All verticals</span></div>
+    </div>
+    <div class="module-card">
+      <div class="m-head"><h4>FallReach</h4><span class="pill mit">MIT</span></div>
+      <div class="m-desc">Autonomous outreach across LinkedIn / email / WhatsApp / Instagram / TikTok. Swipe-to-approve queue.</div>
+      <div class="m-meta"><span class="pill">Ad, consult, e-com</span></div>
+    </div>
+    <div class="module-card">
+      <div class="m-head"><h4>FallSecurity</h4><span class="pill mit">MIT</span></div>
+      <div class="m-desc">GDPR · consent management · access logs · breach playbooks · DPIA templates.</div>
+      <div class="m-meta"><span class="pill">All verticals</span></div>
+    </div>
+    <div class="module-card">
+      <div class="m-head"><h4>FallRouter</h4><span class="pill mit">MIT</span></div>
+      <div class="m-desc">Multi-LLM router · cost caps · fallback rails · latency-aware routing. Upgrades the BYOK core.</div>
+      <div class="m-meta"><span class="pill">All verticals</span></div>
+    </div>
+    <div class="module-card">
+      <div class="m-head"><h4>FallColony</h4><span class="pill mit">MIT</span></div>
+      <div class="m-desc">Agent marketplace · hire external agents · KCC-escrowed job board · Konomi curriculum.</div>
+      <div class="m-meta"><span class="pill">All verticals</span></div>
+    </div>
+    <div class="module-card">
+      <div class="m-head"><h4>Botler</h4><span class="pill mit">MIT</span></div>
+      <div class="m-desc">In-browser Llama 3.1 8B. Zero-cost generation. Powers the training simulator across every vertical.</div>
+      <div class="m-meta"><span class="pill">All verticals</span></div>
+    </div>
+    <div class="module-card">
+      <div class="m-head"><h4>Suzen (必然)</h4><span class="pill mit">MIT</span></div>
+      <div class="m-desc">Necessity oracle · reads any plan and returns the MUST / SHOULD / MAY of what's inevitable. Ω-tier agent.</div>
+      <div class="m-meta"><span class="pill">All verticals</span></div>
+    </div>
+  </div>
+  <div style="margin-top:22px">
+    <a href="modules.html" class="btn ghost">Browse all 60+ modules</a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Pricing</span>
+  <h2>The core is <em>free forever.</em></h2>
+  <p>MIT-licensed. Fork it. Run it. Modify it. No monthly rent. Optional support tiers for owners who want it done for them.</p>
+  <div class="grid grid-4" style="margin-top:22px">
+    <div class="price-card">
+      <div class="tier">Sovereign</div>
+      <div class="price">£0<span class="per"> · forever</span></div>
+      <div class="tagline">Fork, deploy, run. Full FallHub core + every MIT module. Community support.</div>
+      <ul>
+        <li>Complete substrate + verticals</li>
+        <li>All 60+ estate modules</li>
+        <li>BYOK across 6 LLM providers</li>
+        <li>Free local Llama via Botler</li>
+        <li>Community discussions</li>
+      </ul>
+      <a href="setup.html" class="btn ghost">Deploy yourself</a>
+    </div>
+    <div class="price-card">
+      <div class="tier">Starter</div>
+      <div class="price">£29<span class="per"> /month</span></div>
+      <div class="tagline">Concierge setup + email support. Get live in one afternoon.</div>
+      <ul>
+        <li>Everything in Sovereign</li>
+        <li>Guided setup (60 min video)</li>
+        <li>Email support · 48h response</li>
+        <li>Kernel pre-populated for you</li>
+        <li>Monthly updates delivered</li>
+      </ul>
+      <a href="clients.html" class="btn ghost">Talk to us</a>
+    </div>
+    <div class="price-card recommended">
+      <div class="tier">Pro</div>
+      <div class="price">£199<span class="per"> /month</span></div>
+      <div class="tagline">Done-for-you deployment · autopilot tuning · quarterly review.</div>
+      <ul>
+        <li>Everything in Starter</li>
+        <li>We deploy + tune it</li>
+        <li>Autopilot guardrail calibration</li>
+        <li>Priority support · 4h response</li>
+        <li>Quarterly kernel refresh</li>
+      </ul>
+      <a href="clients.html" class="btn brass">Book Pro setup</a>
+    </div>
+    <div class="price-card">
+      <div class="tier">Agency</div>
+      <div class="price">£999<span class="per"> /month</span></div>
+      <div class="tagline">For agencies deploying FallHub to multiple SMB clients.</div>
+      <ul>
+        <li>Everything in Pro</li>
+        <li>Unlimited client deployments</li>
+        <li>White-label branding</li>
+        <li>Direct Slack + weekly calls</li>
+        <li>Custom vertical builds included</li>
+      </ul>
+      <a href="clients.html" class="btn ghost">Partner with us</a>
     </div>
   </div>
 </section>
 
-<!-- ─── FAQ ──────────────────────────────────────────────── -->
-<section class="section" id="faq">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <h4>FAQ</h4>
-        <h2>The questions everyone asks.</h2>
-      </div>
-    </div>
-    <div class="faq-grid">
-      <div class="faq-item"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">Do I need to know how to code?</div><div class="faq-a"><div class="faq-a-inner">To fork and edit the config file — no. Every operator-specific value lives in <code>config/onehub.config.json</code> which is a text file you edit like a spreadsheet. To modify HTML or add custom features — you'd need basic HTML/JS, or hire someone (Simon takes bespoke work · see FallEnterprise tier ladder).</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">How is this different from Hostaway / Lodgify / Guesty?</div><div class="faq-a"><div class="faq-a-inner">Those charge £79-£200/month forever. You never own the software. If they go bankrupt or price-hike, you're stuck. OneHub is a one-time fork · MIT-licensed · yours forever · zero monthly fees. Stripe takes 1.4% on direct bookings, that's it.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">What about Airbnb's 15% commission?</div><div class="faq-a"><div class="faq-a-inner">Bookings that come IN via Airbnb still pay Airbnb their commission — that's Airbnb's business, not ours. OneHub's win is DIRECT bookings via your own site (1.4% Stripe fee vs 15% Airbnb) plus unified inbox management for the bookings that do come via OTAs.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">What happens if you disappear tomorrow?</div><div class="faq-a"><div class="faq-a-inner">MIT-licensed. You have the source. Any competent web dev can operate the codebase from the docs alone. Cloudflare Workers keeps running. GitHub Pages keeps serving. Nothing depends on OneHub-the-company continuing to exist.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">Can I hire someone to set it up for me?</div><div class="faq-a"><div class="faq-a-inner">Yes. Two options: (1) hire Simon direct via <a href="https://www.fiverr.com/">Fiverr</a> or <a href="mailto:sjgant80@gmail.com">email</a> — typically £599-£3,499 for a full white-labelled setup. (2) fork the repo, hand it to any freelance developer with the credentials.html checklist filled — most competent devs can wire it up in 1-2 days.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">Does the AI reply drafting need a paid API key?</div><div class="faq-a"><div class="faq-a-inner">No. Default is browser-native WebLLM — a small language model that runs entirely in your browser after a one-time ~600MB download. Free, works offline, slower on the first response. If you want faster/higher-quality replies, plug in a Claude or OpenAI API key and OneHub uses that instead.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">Where does guest data live?</div><div class="faq-a"><div class="faq-a-inner">In the browser's IndexedDB on the device you're using as your operator hub (typically your phone or laptop). Plus a backup copy in your Cloudflare Worker's KV store if you enable that. Never on someone else's server unless you deliberately configure it that way. Sovereign by default.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="this.parentNode.classList.toggle('open')">What's the credentials.html file for?</div><div class="faq-a"><div class="faq-a-inner">A rendered setup checklist page you ship to a client operator (or use yourself). Walks through gathering every API key, iCal URL, and account credential in a structured form. See <a href="https://sjgant80-hub.github.io/wishwood/credentials.html" target="_blank">Wishwood's credentials.html</a> for the live pattern.</div></div></div>
-    </div>
+<section class="section">
+  <span class="section-eyebrow">Frequently asked</span>
+  <h2>Every reasonable question · <em>answered.</em></h2>
+
+  <details class="q-card">
+    <summary>How is this different from Wix, Shopify, or Squarespace?</summary>
+    <p>Those give you a website. FallHub gives you an operating system that runs your business — with an AI operator baked in, doing the work. You still get a website (via the module marketplace) but that's a small part. The main thing FallHub does is <em>run</em> operations: replies, quotes, pricing, complaints, follow-ups, records, compliance. And you own the whole thing. No monthly subscription unless you want optional support.</p>
+  </details>
+  <details class="q-card">
+    <summary>What if the AI makes a mistake or hallucinates?</summary>
+    <p>Two layers of protection. First, the kernel: a strict JSON file that tells the AI exactly what you have (and explicitly what you don't have — no hot tub, no pool, etc). The AI can't claim things not in the kernel. Second, the autonomy dial: for the first weeks you run on Watch or Suggest, where the AI drafts but you approve every action. As trust builds, you slide up. Every action is Ed25519-signed with a 30-second undo window.</p>
+  </details>
+  <details class="q-card">
+    <summary>Do I need an AI subscription?</summary>
+    <p>No. FallHub has a free local option: Botler runs Llama 3.1 8B directly in the browser, no server, no API key. It's slower than paid APIs but costs nothing forever. When you want faster or smarter, plug in a key from any of six providers.</p>
+  </details>
+  <details class="q-card">
+    <summary>Can I use it for a niche not on your list?</summary>
+    <p>Yes. Any small business fits the substrate. The four flagship verticals (hospitality, trades, ad firm, accounting) plus barbershop show the pattern. For any other niche you write a 20-line kernel file and a tool registry, and you're running. Or hire us to build the vertical template — one-off fee, MIT-released so others can fork it too.</p>
+  </details>
+  <details class="q-card">
+    <summary>What about my customer data?</summary>
+    <p>It stays on your device or your chosen cloud. FallHub is designed to run offline-capable, storing state in IndexedDB and optionally syncing via mesh (WebRTC) or your own Cloudflare Worker. We never see it. Included: <a href="modules.html">FallSecurity</a> module covers GDPR consent management, breach playbooks, access logs.</p>
+  </details>
+  <details class="q-card">
+    <summary>How is this AI-Native Solutions company positioned?</summary>
+    <p>We build sovereign substrates. Not SaaS. Not walled gardens. Every product is MIT-licensed. Revenue comes from optional support tiers, custom vertical development, and agency licensing. The economics are aligned: our success depends on customers owning what they build, not renting from us. See <a href="investors.html">Investors</a> for the model.</p>
+  </details>
+  <details class="q-card">
+    <summary>What's the Konomi doctrine referenced everywhere?</summary>
+    <p>The Konomi tradition is a set of construction principles used across our estate: the seal (◊·κ=1), the 14-point gate, the seal-chain audit pattern, the primes-of-seven spine. It's what makes the products cohere across all 60+ modules. You don't need to understand it to use FallHub — but if you're curious, see <a href="https://sjgant80-hub.github.io/fallcolony/" target="_blank">FallColony</a> and its Konomi curriculum.</p>
+  </details>
+  <details class="q-card">
+    <summary>How does the training simulator work?</summary>
+    <p>Every FallHub vertical ships with a "practice mode". You click DOWNLOAD & TRAIN, a local AI (Llama 3.1 8B) downloads to your browser once (~4GB, forever cached), then it spawns believable fake customers. They message, book, complain, ask questions. You reply. The same AI grades you 0-10 on warmth, accuracy, completeness, tone-fit. You practice until you're fast and confident, then flip on real customers.</p>
+  </details>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Get started</span>
+  <h2>Ready to <em>own your business OS?</em></h2>
+  <div class="cta" style="margin-top:12px">
+    <a href="setup.html" class="btn">Deploy FallHub · 20 min guide</a>
+    <a href="verticals.html" class="btn ghost">Pick your vertical</a>
+    <a href="clients.html" class="btn ghost">Book a Pro setup</a>
+    <a href="investors.html" class="btn ghost">Investor deck</a>
   </div>
 </section>
 
 </main>
 
-<footer>
-  <div class="container">
-    <div class="foot-grid">
-      <div class="foot-col">
-        <h4>OneHub</h4>
-        <p style="color:var(--dim);font-size:.85rem;line-height:1.6;margin-bottom:14px">Sovereign direct-booking + unified inbox + AI replies for independent stay operators. Fork it, config it, live in a day.</p>
-        <p class="mono" style="color:var(--muted);font-size:.72rem">MIT Licence · ◊·κ=1</p>
-      </div>
-      <div class="foot-col">
-        <h4>Live case</h4>
-        <a href="https://sjgant80-hub.github.io/wishwood/" target="_blank">Wishwood (Kent, UK)</a>
-        <a href="https://sjgant80-hub.github.io/wishwood/hub.html" target="_blank">Hub view</a>
-        <a href="https://sjgant80-hub.github.io/wishwood/credentials.html" target="_blank">Credentials pattern</a>
-        <a href="https://sjgant80-hub.github.io/wishwood/howitworks.html" target="_blank">How it works</a>
-      </div>
-      <div class="foot-col">
-        <h4>Fork · Docs</h4>
-        <a href="https://github.com/sjgant80-hub/onehub">GitHub repo</a>
-        <a href="docs/QUICKSTART.md">Quickstart</a>
-        <a href="docs/CREDENTIALS-SETUP.md">Setup checklist</a>
-        <a href="ai.html">AI agent dossier</a>
-      </div>
-    </div>
-    <div class="foot-legal">© 2026 AI Native Solutions · Simon Gant · UK · sovereign single-author</div>
-  </div>
-</footer>
-
+<script defer src="assets/nav.js"></script>
 </body>
 </html>

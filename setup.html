@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get started · FallHub</title>
+<meta name="description" content="Deploy FallHub in 20 minutes. Fork the repo, pick your vertical template, fill the kernel, bring your own AI key. Free tier walkthrough.">
+<meta name="theme-color" content="#0b0a0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a0f'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%23b8974a' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body>
+
+<main class="wide">
+
+<section class="hero">
+  <div class="tag"><span class="glyph">◊</span> FallHub · get started</div>
+  <h1>Deploy FallHub · <em>20 minutes.</em></h1>
+  <p class="lede">Fork the repo. Pick a vertical template. Fill the kernel. Bring your own AI key. Slide the autonomy dial from Watch to Auto as trust grows. Zero servers to rent, zero data to give up, zero monthly rent unless you want optional support.</p>
+  <div class="cta">
+    <a href="https://github.com/sjgant80-hub/onehub/fork" target="_blank" class="btn brass">Fork the repo</a>
+    <a href="#step1" class="btn ghost">Read the guide</a>
+    <a href="clients.html" class="btn ghost">Or book Pro setup</a>
+  </div>
+</section>
+
+<section class="section" id="step1">
+  <span class="section-eyebrow">Step 1 · Fork</span>
+  <h2>Fork the FallHub <em>repo.</em></h2>
+  <p>Click <a href="https://github.com/sjgant80-hub/onehub/fork" target="_blank">Fork on GitHub</a>. Name it after your business. GitHub Pages auto-deploys within a couple of minutes.</p>
+  <p>You now have your own live FallHub at <code>https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/</code>.</p>
+  <div class="card">
+    <h4>Zero-setup version</h4>
+    <p>Prefer to skip cloning entirely? Use <a href="https://sjgant80-hub.github.io/onehub/" target="_blank">the hosted reference</a>. All state lives in your browser (IndexedDB) — nothing on our servers. You lose the ability to customise the code but gain zero-friction start.</p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Step 2 · Pick vertical</span>
+  <h2>Choose the <em>template.</em></h2>
+  <p>Open <code>ai/kernel.json</code> in your forked repo. Replace the example content with a template from <code>verticals/</code>:</p>
+  <ul style="padding-left:22px">
+    <li><a href="verticals/hospitality.html">Hospitality</a> · holiday rental, glamping, B&B, boutique hotel</li>
+    <li><a href="verticals/trades.html">Trades</a> · plumber, electrician, decorator, gas engineer</li>
+    <li><a href="verticals/adshop.html">Ad firm</a> · agency, brand studio, freelance strategy</li>
+    <li><a href="verticals/accounting.html">Accounting practice</a> · bookkeepers, self-assessment, VAT</li>
+    <li><a href="verticals/barbershop.html">Barbershop chain</a> · multi-location grooming (also gyms, cafés)</li>
+    <li>Or bespoke — see <a href="verticals.html#any-niche">the pattern</a> for any niche</li>
+  </ul>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Step 3 · Fill the kernel</span>
+  <h2>Tell the AI <em>what your business is.</em></h2>
+  <p>The kernel is a JSON file. It has a fixed shape depending on your vertical. Fill the fields for your business.</p>
+  <p><strong>Critical:</strong> the <code>not_present</code> list. This is what the AI will NEVER claim exists. If you don't have a hot tub, list "hot tub". If you don't service commercial kitchens, list them. This is what stops hallucinations.</p>
+
+  <div class="card raised">
+    <h3>15 minutes typical</h3>
+    <p>Most businesses can fill their initial kernel in 15 minutes. You can refine it endlessly later — every real customer message that comes in is an opportunity to sharpen the kernel.</p>
+    <p>If you want to speed this up, upload your existing website, PDF menu, or past reply exports and let the AI extract a kernel draft. You review and finalise.</p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Step 4 · BYOK</span>
+  <h2>Bring your own <em>AI key.</em></h2>
+  <p>Open <code>autopilot.html</code> on your deployed site. Pick a provider:</p>
+  <div class="grid grid-3">
+    <div class="card"><h4>Anthropic</h4><p style="font-size:13.5px">Claude · best quality. Get key at <a href="https://console.anthropic.com/settings/keys" target="_blank">console.anthropic.com</a>.</p></div>
+    <div class="card"><h4>OpenAI</h4><p style="font-size:13.5px">GPT · widely available. Get key at <a href="https://platform.openai.com/api-keys" target="_blank">platform.openai.com</a>.</p></div>
+    <div class="card"><h4>Google Gemini</h4><p style="font-size:13.5px">Gemini Pro. Get key at <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com</a>.</p></div>
+    <div class="card"><h4>Groq</h4><p style="font-size:13.5px">Fastest inference · llama-3.3-70b. Get key at <a href="https://console.groq.com/keys" target="_blank">console.groq.com</a>.</p></div>
+    <div class="card"><h4>Mistral</h4><p style="font-size:13.5px">EU-hosted. Get key at <a href="https://console.mistral.ai/api-keys" target="_blank">console.mistral.ai</a>.</p></div>
+    <div class="card good"><h4>WebLLM (free)</h4><p style="font-size:13.5px">Llama 3.1 8B in your browser. Zero cost forever. Slower but no key needed.</p></div>
+  </div>
+  <p style="margin-top:14px">Paste the key. It stores in your browser localStorage only. Nothing ever hits our servers.</p>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Step 5 · Harvest</span>
+  <h2>Enrich the kernel from your <em>online footprint.</em></h2>
+  <p>Click <strong>Harvest</strong> on the autopilot page. The system pulls review URLs you provide (Airbnb, Booking.com, Google, Trustpilot), competitor pages, local weather, seasonality signals. All are digested via your BYOK LLM into an enriched kernel.</p>
+  <p>This is what makes the AI sound like <em>you</em>, not like a generic chatbot. It learns your voice from your past replies. It learns your positioning from your listing copy. It learns what your customers actually complain about from your review distillation.</p>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Step 6 · Practice</span>
+  <h2>Train on the simulator <em>before real customers.</em></h2>
+  <p>Open <code>sim.html</code>. Click DOWNLOAD & TRAIN. Botler (Llama 3.1 8B) downloads to your browser once (~4GB, forever cached). Then it becomes a swarm of believable fake customers.</p>
+  <p>Set intensity (chill / normal / peak / chaos), duration, click Start Wave. Fake customers flood the inbox. You reply. Botler judges you 0-10 on warmth, accuracy, completeness, tone-fit. Practice until you're fast and confident.</p>
+  <p><strong>Sim state is namespaced separately.</strong> Reset wipes only sim data. Nothing real is touched.</p>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Step 7 · Slide the dial</span>
+  <h2>Ratchet autonomy <em>up as trust grows.</em></h2>
+  <div class="grid grid-3">
+    <div class="card"><h4>Watch (week 1)</h4><p style="font-size:14px">AI narrates. Does nothing. You do it all. Pure learning.</p></div>
+    <div class="card"><h4>Suggest (week 2-3)</h4><p style="font-size:14px">AI drafts every reply. You approve.</p></div>
+    <div class="card"><h4>Auto-Low (week 4-6)</h4><p style="font-size:14px">FAQ replies auto-sent.</p></div>
+    <div class="card"><h4>Auto-Med (month 2)</h4><p style="font-size:14px">Quotes + pricing tweaks auto-sent.</p></div>
+    <div class="card"><h4>Full (month 3+)</h4><p style="font-size:14px">Everything auto except explicit flags.</p></div>
+    <div class="card good"><h4>Watch resume</h4><p style="font-size:14px">Slide back down anytime.</p></div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Step 8 · Snap in modules</span>
+  <h2>Install <em>capabilities.</em></h2>
+  <p>Open <code>modules.html</code> on your instance. Browse the marketplace. Click Install on any module. It downloads to your instance, registers its tools into the agent registry, adds any UI surfaces to your sidebar.</p>
+  <div class="cta">
+    <a href="modules.html" class="btn">Browse the marketplace</a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Or · done for you</span>
+  <h2>Not the DIY type? <em>Book Pro setup.</em></h2>
+  <div class="card ox">
+    <p>We deploy FallHub for you within 48 hours. Kernel pre-populated from your website + existing reviews. Autonomy calibrated. Modules installed. Autopilot tuned. You show up to a working autopilot on day one.</p>
+    <div class="cta" style="margin-top:16px">
+      <a href="clients.html" class="btn brass">Book Pro setup · £199/mo</a>
+      <a href="mailto:hello@ai-nativesolutions.com?subject=FallHub%20Pro%20setup" class="btn ghost">Talk to us first</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Reference</span>
+  <h2>Docs · <em>deep dives.</em></h2>
+  <ul>
+    <li><a href="https://github.com/sjgant80-hub/onehub/blob/main/docs/QUICKSTART.md" target="_blank">QUICKSTART</a> · full technical setup guide</li>
+    <li><a href="https://github.com/sjgant80-hub/onehub/blob/main/docs/CREDENTIALS-SETUP.md" target="_blank">Credentials setup</a> · connecting APIs (Airbnb, Booking, Stripe, WhatsApp)</li>
+    <li><a href="modules.html">Module marketplace</a> · all 60+ estate modules</li>
+    <li><a href="verticals.html">Vertical templates</a> · flagship four + bespoke</li>
+    <li><a href="clients.html">For clients</a> · what this means for a business owner</li>
+    <li><a href="investors.html">For investors</a> · thesis + traction + revenue model</li>
+  </ul>
+</section>
+
+</main>
+
+<script defer src="assets/nav.js"></script>
+</body>
+</html>

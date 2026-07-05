@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accounting practice vertical · FallHub</title>
+<meta name="description" content="FallHub for accountants, bookkeepers, self-assessment agents, VAT specialists, payroll bureaux. HMRC calendar, chase missing docs, draft letters, MTD-ready.">
+<meta name="theme-color" content="#0b0a0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a0f'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%23b8974a' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+
+<main class="wide">
+
+<section class="hero">
+  <div class="tag"><span class="glyph">Σ</span> Vertical · Accounting practice</div>
+  <h1>For accountants. <em>Deadlines that don't miss.</em></h1>
+  <p class="lede">Bookkeepers · self-assessment agents · VAT specialists · corporation tax · payroll bureaux · MTD ready. HMRC calendar auto-tracks every client's deadlines. Missing-docs chase runs on your schedule. HMRC letters drafted with case-law grounding.</p>
+  <div class="cta">
+    <a href="../setup.html" class="btn brass">Deploy accounting template</a>
+    <a href="../clients.html" class="btn ghost">Book Pro setup</a>
+    <a href="../modules.html" class="btn ghost">See accounting modules</a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The vertical config</span>
+  <h2>The kernel · <em>client-portfolio-centric.</em></h2>
+  <div class="split">
+    <div>
+      <p>Accounting kernel is a client-portfolio kernel. Each client is an entity (sole trader, Ltd, partnership, LLP). Each has filing deadlines (SA, VAT, CT, PAYE, CIS, iXBRL). Kernel encodes: client entity structure, accounting reference dates, HMRC accounts, VAT scheme, chase cadence per client, fee arrangement.</p>
+      <p>The AI won't file returns (never · that's you). It <em>drafts</em>, chases, calculates estimates, and drafts HMRC correspondence with FallBrief-grounded citations.</p>
+    </div>
+    <div>
+      <pre><span class="c">// accounting kernel · abridged</span>
+{
+  <span class="k">"practice"</span>: {
+    <span class="k">"name"</span>: <span class="s">"Ellis &amp; Co"</span>,
+    <span class="k">"aat_mip"</span>: <span class="s">"12345"</span>,
+    <span class="k">"pi_insurer"</span>: <span class="s">"..."</span>
+  },
+  <span class="k">"clients"</span>: [
+    {
+      <span class="k">"id"</span>: <span class="s">"foo_ltd"</span>,
+      <span class="k">"name"</span>: <span class="s">"Foo Design Ltd"</span>,
+      <span class="k">"entity"</span>: <span class="s">"limited"</span>,
+      <span class="k">"ard"</span>: <span class="s">"31-03"</span>,
+      <span class="k">"vat_scheme"</span>: <span class="s">"cash"</span>,
+      <span class="k">"fees_gbp_year"</span>: 2400
+    }
+  ]
+}</pre>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The tools</span>
+  <h2>Verbs registered in the <em>accounting template.</em></h2>
+  <div class="grid grid-3">
+    <div class="card"><h4>track_deadlines</h4><p style="font-size:13.5px">Roll every client's SA / VAT / CT / PAYE dates into a single calendar.</p><span class="pill good">Always auto</span></div>
+    <div class="card"><h4>chase_docs</h4><p style="font-size:13.5px">Message client for missing receipts / bank statements / P60 / etc.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>draft_return</h4><p style="font-size:13.5px">Populate SA/VAT/CT return from source docs. You review and file.</p><span class="pill">Suggest tier</span></div>
+    <div class="card"><h4>estimate_liability</h4><p style="font-size:13.5px">Rough estimate for client from current data. "You'll owe roughly £X".</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>draft_hmrc_letter</h4><p style="font-size:13.5px">Draft response to HMRC letter with FallBrief-cited references.</p><span class="pill">Suggest tier</span></div>
+    <div class="card"><h4>schedule_review</h4><p style="font-size:13.5px">Book year-end review call with client based on ARD.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>send_invoice</h4><p style="font-size:13.5px">Annual or milestone fee invoice. Auto-chase configurable.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>onboard_client</h4><p style="font-size:13.5px">64-8 form draft, AML checklist, engagement letter draft, 3-2-1 setup.</p><span class="pill warn">Auto-med</span></div>
+    <div class="card"><h4>flag_for_human</h4><p style="font-size:13.5px">Complex tax question, ethics call, HMRC investigation. Always escalates.</p><span class="pill good">Always available</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The personas</span>
+  <h2>Ten archetypes · <em>typical client base.</em></h2>
+  <div class="grid grid-2" style="margin-top:14px">
+    <div class="card">
+      <h4>Personas</h4>
+      <ul style="padding-left:18px">
+        <li>Chaotic sole trader · receipts in a shoebox, always late</li>
+        <li>On-top-of-it Ltd Co director · deadline-plus-30-days early</li>
+        <li>Late filer · fines routine, needs firm hand</li>
+        <li>First-time freelancer · needs education, patience</li>
+        <li>Contractor (IR35-relevant) · needs status reviews</li>
+        <li>Landlord (Making Tax Digital) · property income declared</li>
+        <li>Small retail (VAT-registered) · Flat rate vs standard confusion</li>
+        <li>Ecommerce (multi-jurisdiction) · OSS/IOSS, complex</li>
+        <li>Growing agency · payroll + pension auto-enrol emerging</li>
+        <li>Semi-retired · minimal activity, needs light touch</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Scenarios (weighted)</h4>
+      <ul style="padding-left:18px">
+        <li>Missing docs (bank statement, receipt, P60) · 25%</li>
+        <li>Client question about tax owed · 15%</li>
+        <li>HMRC letter forwarded · 10%</li>
+        <li>Deadline reminder to client · 12%</li>
+        <li>New client inquiry · 8%</li>
+        <li>Fee question / invoice chase · 8%</li>
+        <li>Payroll change (new starter/leaver) · 5%</li>
+        <li>VAT registration query · 4%</li>
+        <li>MTD signup / setup · 4%</li>
+        <li>Complex tax question needing you · 5%</li>
+        <li>Referral thank-you · 4%</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">A day in the life</span>
+  <h2>What the accounting autopilot <em>does for you.</em></h2>
+  <div class="card raised">
+    <p><strong>08:30</strong> · Open FallHub. Deadline dashboard shows 7 clients with something due this week. 3 have all their docs (VAT drafts already prepped for review). 4 are missing something. AI has already sent tailored chase messages to each of the 4 based on their persona (chaotic vs. on-top).</p>
+    <p><strong>10:00</strong> · An HMRC letter arrived for Client Foo — a compliance check. AI drafted the initial response citing the correct HMRC manual reference (via FallBrief). You spot-check, tweak one line, sign, PDF.</p>
+    <p><strong>11:30</strong> · New client inquiry from web form. AI ran AML pre-screen (basic identity + source-of-funds check), drafted an engagement letter, sent a Calendly link for a 15-min intro call. You accept the meeting.</p>
+    <p><strong>14:00</strong> · Client asks "how much will I owe?". AI estimated from Q1-Q3 data plus a run-rate projection, wrote the reply in your voice with the ranges you'd typically give.</p>
+    <p><strong>16:00</strong> · One of your on-top clients sent last piece of missing paperwork. AI slotted it into the return draft, updated the estimate, told the client the number.</p>
+    <p><strong>17:00</strong> · Weekly review summary in your inbox: revenue collected, unpaid invoices, upcoming deadlines by client, hours saved vs manual chasing.</p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Modules commonly installed on accounting practices</span>
+  <h2>The practice stack.</h2>
+  <div class="grid grid-3">
+    <div class="module-card"><div class="m-head"><h4>FallAccount</h4><span class="pill mit">MIT</span></div><div class="m-desc">The bookkeeping engine. VAT, MTD, P&L, tax computations.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallBrief</h4><span class="pill mit">MIT</span></div><div class="m-desc">HMRC manual references, case-law citations, statutory drafting.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallSecurity</h4><span class="pill mit">MIT</span></div><div class="m-desc">GDPR + AML compliance. Client identity verification workflow.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallCRM Elite</h4><span class="pill mit">MIT</span></div><div class="m-desc">Client portfolio view. Deadline calendar. Signal timeline.</div></div>
+    <div class="module-card"><div class="m-head"><h4>Botler</h4><span class="pill mit">MIT</span></div><div class="m-desc">In-browser LLM for private draft work (tax comp is sensitive).</div></div>
+    <div class="module-card"><div class="m-head"><h4>KardV5</h4><span class="pill mit">MIT</span></div><div class="m-desc">Tax dispute paralegal, tribunal skeleton drafting for edge cases.</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="cta" style="margin-top:20px">
+    <a href="../setup.html" class="btn">Deploy free · setup guide</a>
+    <a href="../clients.html" class="btn ghost">Book Pro setup</a>
+    <a href="../modules.html" class="btn ghost">Browse modules</a>
+  </div>
+</section>
+
+</main>
+
+<script defer src="../assets/nav.js"></script>
+</body>
+</html>

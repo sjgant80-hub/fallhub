@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>OneHub Case Study · Wishwood Glamping · Kent, UK</title>
-<meta name="description" content="Full case study of Wishwood Glamping & Forestry running on OneHub. Real operator, real numbers, real link to a live site.">
+<title>FallHub Case Study · Wishwood Glamping · Kent, UK</title>
+<meta name="description" content="Full case study of Wishwood Glamping & Forestry running on FallHub. Real operator, real numbers, real link to a live site.">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -65,7 +65,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-f
 
 <header>
   <div class="nav-inner">
-    <a href="../" class="brand"><span class="brand-mark">◊</span>OneHub</a>
+    <a href="../" class="brand"><span class="brand-mark">◊</span>FallHub</a>
     <div class="nav-links">
       <a href="../">Home</a>
       <a href="../demo/hub.html">Demo Hub</a>
@@ -79,7 +79,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-f
   <div class="container">
     <div class="eyebrow">◆ Case study · live operator · Kent, UK</div>
     <h1>Wishwood Glamping · <em>the reference operator</em>.</h1>
-    <p class="hero-sub">Wishwood is a 4-unit off-grid glamping site near Canterbury run by Chrissy, a nine-year hosting veteran with a 4.81★ average across 779 reviews. It's the reference deployment of OneHub — everything you see there is what you get when you fork.</p>
+    <p class="hero-sub">Wishwood is a 4-unit off-grid glamping site near Canterbury run by Chrissy, a nine-year hosting veteran with a 4.81★ average across 779 reviews. It's the reference deployment of FallHub — everything you see there is what you get when you fork.</p>
     <div class="meta-row">
       <span>4 units</span>
       <span>Kent, UK</span>
@@ -99,12 +99,12 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-f
 
     <div class="pullquote">
       "The tech was supposed to save me time. It gave me four tabs and a spreadsheet."
-      <small>— Chrissy, before OneHub</small>
+      <small>— Chrissy, before FallHub</small>
     </div>
 
-    <h2>What OneHub replaced</h2>
+    <h2>What FallHub replaced</h2>
     <table class="compare">
-      <thead><tr><th>Function</th><th>Before</th><th>After (OneHub)</th></tr></thead>
+      <thead><tr><th>Function</th><th>Before</th><th>After (FallHub)</th></tr></thead>
       <tbody>
         <tr><td><strong>Channel manager</strong></td><td class="bad">Hostaway · £79/mo</td><td class="good">Self-hosted iCal aggregator · £0</td></tr>
         <tr><td><strong>Booking widget</strong></td><td class="bad">3rd-party embed · commission</td><td class="good">book.html · Stripe 1.4%</td></tr>
@@ -127,14 +127,14 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-f
 
     <div class="pullquote">
       "AI drafts my replies in my voice. I approve every send, or edit two words and hit send. Twenty minutes replaces ninety. And I own the whole thing forever — the file is on my laptop."
-      <small>— Chrissy, after OneHub</small>
+      <small>— Chrissy, after FallHub</small>
     </div>
 
     <h2>Deployment story</h2>
     <ul class="check">
-      <li>Simon forked OneHub into a Wishwood-branded repo</li>
+      <li>AI-Native Solutions forked the FallHub template into a Wishwood-branded repo</li>
       <li>Chrissy filled in the <a href="https://sjgant80-hub.github.io/wishwood/credentials.html" target="_blank">credentials.html checklist</a> over two evenings (Stripe, Twilio for WhatsApp, Resend for email, Cloudflare for the Worker)</li>
-      <li>Simon edited the config JSON with the 4 cabins, their pricing, iCal URLs, and Wishwood's woodland palette</li>
+      <li>AI-Native Solutions filled the config JSON with the 4 cabins, their pricing, iCal URLs, and Wishwood's woodland palette</li>
       <li>Cloudflare Worker deployed in one command with `npx wrangler deploy`</li>
       <li>DNS switched over during quiet season (2 hours downtime, planned)</li>
       <li>Hostaway subscription cancelled the day after go-live</li>
@@ -144,15 +144,15 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-f
     <p>Elapsed time from fork to first live booking: <strong>about 5 days</strong>. Most of that time was waiting for Twilio to approve the WhatsApp sender.</p>
 
     <h2>What's still ahead for Wishwood</h2>
-    <p>The Roost integration (a founding-host cooperative marketplace at <a href="https://sjgant80-hub.github.io/roost/" target="_blank">roost</a>) is the next wedge — same OneHub codebase, additional channel added to the config. Add-on comms channels (Instagram DM, Facebook Messenger) are dropping in one at a time as guest volume from each grows. Neither required a new codebase — just config edits.</p>
+    <p>The Roost integration (a founding-host cooperative marketplace at <a href="https://sjgant80-hub.github.io/roost/" target="_blank">roost</a>) is the next wedge — same FallHub codebase, additional channel added to the config. Add-on comms channels (Instagram DM, Facebook Messenger) are dropping in one at a time as guest volume from each grows. Neither required a new codebase — just config edits.</p>
 
-    <h2>What this proves about OneHub</h2>
+    <h2>What this proves about FallHub</h2>
     <ul class="check">
       <li>Config beats code · reskinning for a new operator vertical (glamping → B&B → treehouse) is a config edit, not a rewrite</li>
       <li>The unified inbox pattern generalises · adding a new channel is one config entry + one webhook</li>
       <li>Free-tier Cloudflare Workers comfortably handle a real small operator's traffic</li>
       <li>The AI draft pattern preserves operator voice · Chrissy's replies still sound like Chrissy</li>
-      <li>MIT source + Cloudflare + GitHub Pages means the operator survives OneHub disappearing</li>
+      <li>MIT source + Cloudflare + GitHub Pages means the operator survives FallHub disappearing</li>
     </ul>
 
     <div class="cta-block">
@@ -168,7 +168,7 @@ footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-f
 </section>
 
 <footer>
-  <span style="color:var(--brass)">◊</span> OneHub · <a href="../">home</a> · <a href="https://github.com/sjgant80-hub/onehub">GitHub</a> · MIT · ◊·κ=1
+  <span style="color:var(--brass)">◊</span> FallHub · <a href="../">home</a> · <a href="https://github.com/sjgant80-hub/onehub">GitHub</a> · MIT · ◊·κ=1
 </footer>
 
 </body>

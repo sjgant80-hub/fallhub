@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Trades vertical · FallHub</title>
+<meta name="description" content="FallHub for plumbers, electricians, decorators, gas engineers, landscapers. Quote jobs, schedule callouts, chase money, respond to emergencies.">
+<meta name="theme-color" content="#0b0a0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a0f'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%23b8974a' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+
+<main class="wide">
+
+<section class="hero">
+  <div class="tag"><span class="glyph">⚒</span> Vertical · Trades</div>
+  <h1>For trades. <em>Money you don't chase.</em></h1>
+  <p class="lede">Plumbers · electricians · decorators · gas engineers · landscapers · roofers · builders. Quote jobs while you're driving. Schedule callouts around emergencies. Chase money on schedule so you don't lose the plot. Keep certificates current. FallHub trades template runs on the same substrate as Wishwood.</p>
+  <div class="cta">
+    <a href="../setup.html" class="btn brass">Deploy trades template</a>
+    <a href="../clients.html" class="btn ghost">Book Pro setup</a>
+    <a href="../modules.html" class="btn ghost">See trades modules</a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The vertical config</span>
+  <h2>The kernel · <em>what the AI knows.</em></h2>
+  <div class="split">
+    <div>
+      <p>Trades kernel encodes: service area (postcode radius + travel time), trade specialities (plumbing / heating / electrical / etc), callout rate structure, day rates, materials markup, insurance certs, Gas Safe / NICEIC / equivalent numbers, emergency-vs-planned split, invoice terms, VAT status, chase cadence.</p>
+      <p>The AI won't quote a job outside your service radius, won't promise work outside your specialities, won't quote a rate below your minimum.</p>
+    </div>
+    <div>
+      <pre><span class="c">// trades kernel · abridged</span>
+{
+  <span class="k">"business"</span>: {
+    <span class="k">"name"</span>: <span class="s">"Riverside Plumbing"</span>,
+    <span class="k">"trade"</span>: <span class="s">"plumbing_heating"</span>,
+    <span class="k">"gas_safe"</span>: <span class="s">"123456"</span>,
+    <span class="k">"service_area"</span>: {
+      <span class="k">"centre"</span>: <span class="s">"CV1"</span>,
+      <span class="k">"radius_miles"</span>: 15
+    },
+    <span class="k">"specialities"</span>: [
+      <span class="s">"boiler_service"</span>,
+      <span class="s">"emergency_repairs"</span>,
+      <span class="s">"bathroom_install"</span>
+    ],
+    <span class="k">"not_offered"</span>: [
+      <span class="s">"commercial_kitchens"</span>,
+      <span class="s">"underfloor_heating"</span>
+    ]
+  },
+  <span class="k">"rates"</span>: {
+    <span class="k">"callout_gbp"</span>: 85,
+    <span class="k">"hourly_gbp"</span>: 65,
+    <span class="k">"emergency_multiplier"</span>: 1.5
+  }
+}</pre>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The tools</span>
+  <h2>Verbs registered in the <em>trades template.</em></h2>
+  <div class="grid grid-3">
+    <div class="card"><h4>quote_job</h4><p style="font-size:13.5px">Generate quote from job description + kernel rates.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>schedule_callout</h4><p style="font-size:13.5px">Find gap in calendar, book callout, confirm to customer.</p><span class="pill brass">Auto-med</span></div>
+    <div class="card"><h4>flag_emergency</h4><p style="font-size:13.5px">Route emergency (burst pipe, no heat) to you immediately.</p><span class="pill good">Always auto</span></div>
+    <div class="card"><h4>order_materials</h4><p style="font-size:13.5px">Order materials for tomorrow's jobs from your supplier API.</p><span class="pill warn">Auto-med</span></div>
+    <div class="card"><h4>send_invoice</h4><p style="font-size:13.5px">Generate invoice on job completion. Configurable chase schedule.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>chase_payment</h4><p style="font-size:13.5px">Follow up unpaid invoices on your schedule (day 7, 14, 21).</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>respond_review</h4><p style="font-size:13.5px">Draft reply to a Google/Trustpilot review. Confidence-gated.</p><span class="pill">Auto-low if warm</span></div>
+    <div class="card"><h4>check_cert_expiry</h4><p style="font-size:13.5px">Alert when Gas Safe / MOT / PL insurance nears renewal.</p><span class="pill good">Always auto</span></div>
+    <div class="card"><h4>flag_for_human</h4><p style="font-size:13.5px">Escalate anything outside kernel or high-risk.</p><span class="pill good">Always available</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The personas</span>
+  <h2>Ten archetypes · <em>typical trade day.</em></h2>
+  <div class="grid grid-2" style="margin-top:14px">
+    <div class="card">
+      <h4>Personas</h4>
+      <ul style="padding-left:18px">
+        <li>Burst-pipe emergency · panicked, no time to shop around</li>
+        <li>Planned renovation · has a project manager, needs Gantt-friendly quote</li>
+        <li>Landlord regular · multiple properties, monthly-invoice-friendly</li>
+        <li>Insurance claim · needs itemised report</li>
+        <li>Quote shopper · will price 4 tradespeople, needs sharp response</li>
+        <li>Elderly customer · trust matters more than price</li>
+        <li>Commercial letting agent · bulk work, slow payer</li>
+        <li>Referral from happy customer · warm, trust presumed</li>
+        <li>Awkward client · disputes every line item</li>
+        <li>Home vendor · needs certificate before sale completes</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Scenarios (weighted)</h4>
+      <ul style="padding-left:18px">
+        <li>Emergency callout request · 15%</li>
+        <li>Quote request from web form · 30%</li>
+        <li>Schedule change (customer) · 10%</li>
+        <li>Invoice payment received · 8%</li>
+        <li>Unpaid invoice past due · 10%</li>
+        <li>Review request or response · 6%</li>
+        <li>Materials arrival check · 5%</li>
+        <li>Follow-up: how's the boiler? · 4%</li>
+        <li>Warranty callback · 3%</li>
+        <li>Quote comparison ("cheaper down the road") · 6%</li>
+        <li>Referral thank-you · 3%</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">A day in the life</span>
+  <h2>What the trades autopilot <em>does for you.</em></h2>
+  <div class="card raised">
+    <p><strong>07:00</strong> · You're driving to the first job. Overnight: 3 quote requests came in. FallHub answered all three within 90 seconds of arrival, priced from kernel rates + travel adjustment. Two accepted, one still shopping. Scheduled the two into gaps between existing jobs.</p>
+    <p><strong>08:30</strong> · Emergency call: burst pipe in a rental. FallHub couldn't auto-book (over kernel threshold for auto) so it pinged you. You said yes. FallHub confirmed to the customer with ETA and callout rate, wrote it up as an emergency job.</p>
+    <p><strong>10:00</strong> · On-site. Materials for tomorrow already ordered from Plumbase via API — FallHub knows what's in tomorrow's jobs, ordered against your account, delivery slotted for 08:00.</p>
+    <p><strong>12:30</strong> · Lunch. Two invoices ready to send from morning's completed jobs. You review one line item, both go out.</p>
+    <p><strong>16:00</strong> · End of day. Weekly chase batch went out — 4 unpaid invoices at day 7/14/21 got tiered follow-ups. Google review from Tuesday's landlord got a warm reply drafted (you approved before it sent). Gas Safe cert expiring in 45 days flagged with renewal calendar link.</p>
+    <p><strong>17:00</strong> · Home. Weekly summary in your inbox: revenue, jobs completed, average response time, review score, customers to prioritise next week.</p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Modules commonly installed on trades</span>
+  <h2>The stack trades <em>run.</em></h2>
+  <div class="grid grid-3">
+    <div class="module-card"><div class="m-head"><h4>FallAccount</h4><span class="pill mit">MIT</span></div><div class="m-desc">Bookkeeping, VAT, MTD. Materials, travel, mileage.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallCRM Elite</h4><span class="pill mit">MIT</span></div><div class="m-desc">Customer history. Property records. Warranty tracking.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallSecurity</h4><span class="pill mit">MIT</span></div><div class="m-desc">GDPR for customer address / photo data. Insurance evidence trail.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallBrief</h4><span class="pill mit">MIT</span></div><div class="m-desc">Consumer Rights Act 2015 disputes. Insurance claim wording.</div></div>
+    <div class="module-card"><div class="m-head"><h4>Botler</h4><span class="pill mit">MIT</span></div><div class="m-desc">Free local LLM for on-van drafting when signal is patchy.</div></div>
+    <div class="module-card"><div class="m-head"><h4>Cassie Oracle</h4><span class="pill mit">MIT</span></div><div class="m-desc">Local competitor watch. Rate benchmarking against nearby trades.</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Setup for trades</span>
+  <h2>Live in <em>under 90 minutes.</em></h2>
+  <div class="step"><span class="n">1</span><h4>Fork · pick trades template</h4><p>Fork the repo. Rename to your business. GitHub Pages auto-deploys.</p></div>
+  <div class="step"><span class="n">2</span><h4>Fill the kernel</h4><p>Business name, trade, service area radius, specialities, rates, insurance / cert numbers, invoice terms. ~30 min.</p></div>
+  <div class="step"><span class="n">3</span><h4>Connect supplier APIs</h4><p>Plumbase / Screwfix / Toolstation / local supplier. Where available, materials auto-order on approval.</p></div>
+  <div class="step"><span class="n">4</span><h4>Practice · then live</h4><p>Sim wave of fake jobs. Practice quoting, scheduling, chasing. Slide dial to Auto-Low for FAQ replies.</p></div>
+  <div class="cta" style="margin-top:22px">
+    <a href="../setup.html" class="btn">Full setup guide</a>
+    <a href="../clients.html" class="btn ghost">Or book Pro setup</a>
+  </div>
+</section>
+
+</main>
+
+<script defer src="../assets/nav.js"></script>
+</body>
+</html>

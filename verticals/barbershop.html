@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Barbershop chain vertical · FallHub</title>
+<meta name="description" content="FallHub for barbershop chains and multi-location grooming. Walk-in queue + appointment book, loyalty punch card, staff shifts, product stock, reviews. Pattern applies to gyms, cafes, salons.">
+<meta name="theme-color" content="#0b0a0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a0f'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%23b8974a' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+
+<main class="wide">
+
+<section class="hero">
+  <div class="tag"><span class="glyph">✂</span> Vertical · Barbershop chain · multi-location pattern</div>
+  <h1>For barbershop chains. <em>Chairs full, no chasing.</em></h1>
+  <p class="lede">Multi-location grooming · walk-in queue plus appointment book · loyalty punch card · staff shift management · product stock · review responses. Same pattern applies to gyms, cafés, hair salons, nail bars, small retail chains — anything with multiple locations and same-shape operations.</p>
+  <div class="cta">
+    <a href="../setup.html" class="btn brass">Deploy chain template</a>
+    <a href="../clients.html" class="btn ghost">Book Pro setup</a>
+    <a href="../modules.html" class="btn ghost">See chain modules</a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The vertical config</span>
+  <h2>The kernel · <em>multi-location.</em></h2>
+  <div class="split">
+    <div>
+      <p>Chain kernel encodes: N locations (each with own hours, capacity, staff roster), service menu (cuts, beard trims, packages), price sheet, walk-in vs booking policy per location, loyalty rules, product stock levels per location, product suppliers, review platforms (Google, Trustpilot per location).</p>
+      <p>The AI can shuffle staff across locations if permitted, alert on stock, respond to reviews per-location, run capacity smoothing across the chain.</p>
+    </div>
+    <div>
+      <pre><span class="c">// barbershop chain kernel · abridged</span>
+{
+  <span class="k">"chain"</span>: {
+    <span class="k">"name"</span>: <span class="s">"Fadeworks"</span>,
+    <span class="k">"loyalty"</span>: {
+      <span class="k">"punch_card_size"</span>: 6,
+      <span class="k">"reward"</span>: <span class="s">"free cut"</span>
+    }
+  },
+  <span class="k">"locations"</span>: [
+    {
+      <span class="k">"id"</span>: <span class="s">"manchester_central"</span>,
+      <span class="k">"chairs"</span>: 6,
+      <span class="k">"walk_in"</span>: <span class="k">true</span>,
+      <span class="k">"hours"</span>: <span class="s">"09-19 · Mon-Sat"</span>
+    }
+  ],
+  <span class="k">"services"</span>: [
+    { <span class="k">"name"</span>: <span class="s">"classic cut"</span>,
+      <span class="k">"minutes"</span>: 30,
+      <span class="k">"gbp"</span>: 22 }
+  ]
+}</pre>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The tools</span>
+  <h2>Verbs registered in the <em>chain template.</em></h2>
+  <div class="grid grid-3">
+    <div class="card"><h4>book_appointment</h4><p style="font-size:13.5px">Slot customer into calendar at requested location.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>walk_in_queue_status</h4><p style="font-size:13.5px">Live wait time at each location for a customer inquiry.</p><span class="pill good">Always auto</span></div>
+    <div class="card"><h4>shift_swap</h4><p style="font-size:13.5px">Ask staff to cover a shift. Handle yes/no threading.</p><span class="pill warn">Auto-med</span></div>
+    <div class="card"><h4>loyalty_credit</h4><p style="font-size:13.5px">Add punch to card. Redeem for reward when card complete.</p><span class="pill good">Always auto</span></div>
+    <div class="card"><h4>restock_alert</h4><p style="font-size:13.5px">Alert when a product falls below threshold; auto-order optional.</p><span class="pill warn">Auto-med</span></div>
+    <div class="card"><h4>respond_review</h4><p style="font-size:13.5px">Draft warm reply to Google review per-location.</p><span class="pill">Auto-low if warm</span></div>
+    <div class="card"><h4>demand_smoothing</h4><p style="font-size:13.5px">Offer discount to nearest customers if a location is overloaded.</p><span class="pill warn">Auto-med</span></div>
+    <div class="card"><h4>flag_for_human</h4><p style="font-size:13.5px">Complaint, staff dispute, unusual pattern. Escalate.</p><span class="pill good">Always available</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The personas</span>
+  <h2>Ten archetypes · <em>chair time.</em></h2>
+  <div class="grid grid-2" style="margin-top:14px">
+    <div class="card">
+      <h4>Personas</h4>
+      <ul style="padding-left:18px">
+        <li>Walk-in regular · knows the wait, doesn't book</li>
+        <li>Weekly loyalty · always at the same chair, same day</li>
+        <li>Wedding groom · one-off, needs consultation</li>
+        <li>Kids' cut · patience-required, parents involved</li>
+        <li>Beard specialist visitor · seeking specific stylist</li>
+        <li>Karen · complains, tests boundaries</li>
+        <li>New in town · looking for a regular chair</li>
+        <li>Product buyer · buys pomade + wax, not always a cut</li>
+        <li>Group booking · lads before nights out</li>
+        <li>Late arrival · always 10 min behind</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Scenarios (weighted)</h4>
+      <ul style="padding-left:18px">
+        <li>Appointment booking · 30%</li>
+        <li>Walk-in wait-time query · 15%</li>
+        <li>Cancellation / no-show · 8%</li>
+        <li>Google review response · 6%</li>
+        <li>Staff call-in-sick · 5%</li>
+        <li>Product / loyalty question · 8%</li>
+        <li>Group / event booking · 5%</li>
+        <li>Wedding / event consultation · 5%</li>
+        <li>Complaint about cut · 4%</li>
+        <li>Retail order (via IG DM) · 6%</li>
+        <li>Referral / gift card · 4%</li>
+        <li>Follow-up review nudge · 4%</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">A day in the life</span>
+  <h2>What the chain autopilot <em>does for you.</em></h2>
+  <div class="card raised">
+    <p><strong>07:00</strong> · Two staff called in sick overnight (Manchester and Leeds). AI shuffled the rota, sent covering-shift requests to available staff via WhatsApp, confirmed the two who said yes, escalated the one location still short (Leeds) with a suggested short-notice hire from the freelance pool.</p>
+    <p><strong>09:00</strong> · Manchester walk-in queue is 45 min. AI messaged the 3 nearest booked customers offering 10% off tomorrow if they rescheduled. Two rescheduled. Queue drops to 25 min.</p>
+    <p><strong>11:00</strong> · Wedding groom inquiry via IG DM. AI checked the diary, booked the consultation slot with your senior barber next Wednesday, sent the pre-consult questionnaire.</p>
+    <p><strong>13:00</strong> · Pomade stock across two locations dipped below reorder threshold. AI placed the order with the supplier, split delivery to both locations, adjusted the loyalty-reward pomade tier to reflect stock.</p>
+    <p><strong>15:00</strong> · Google review posted at the Liverpool shop, 5 stars. AI drafted a warm thank-you referring by name to the barber. You approved with one edit, it posted.</p>
+    <p><strong>17:00</strong> · End-of-day dashboard: chairs utilised %, revenue per location, top-tipped staff, upcoming loyalty rewards to prep, review score trend across all locations.</p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Modules commonly installed on chains</span>
+  <h2>The chain stack.</h2>
+  <div class="grid grid-3">
+    <div class="module-card"><div class="m-head"><h4>FallAccount</h4><span class="pill mit">MIT</span></div><div class="m-desc">Multi-location P&L, tips accounting, VAT per location.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallCRM Elite</h4><span class="pill mit">MIT</span></div><div class="m-desc">Customer history across all locations. Loyalty tracking.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallReach</h4><span class="pill mit">MIT</span></div><div class="m-desc">Instagram + TikTok scheduling. Cut of the week reel autopublish.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallSecurity</h4><span class="pill mit">MIT</span></div><div class="m-desc">CCTV DPIA, staff DBS records, GDPR for customer photos.</div></div>
+    <div class="module-card"><div class="m-head"><h4>Botler</h4><span class="pill mit">MIT</span></div><div class="m-desc">In-browser LLM for on-tablet drafting.</div></div>
+    <div class="module-card"><div class="m-head"><h4>Cassie Oracle</h4><span class="pill mit">MIT</span></div><div class="m-desc">Local competitor price watch. Foot-traffic pattern awareness.</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Same pattern fits · adjacent chain businesses</span>
+  <h2>Also works for: <em>gyms, cafés, salons, small retail.</em></h2>
+  <p>The chain pattern (N locations, service menu, walk-in + booking, loyalty, stock, staff shifts) applies to a lot of adjacent small businesses:</p>
+  <ul class="tick-list">
+    <li><strong>Fitness studios / PT chains</strong> — classes replace services, membership replaces loyalty punch, trainers replace barbers</li>
+    <li><strong>Cafés / independent coffee</strong> — takeout queue replaces walk-in queue, product stock is more complex</li>
+    <li><strong>Nail bars / hair salons</strong> — near-identical to barbershop</li>
+    <li><strong>Small retail chains</strong> — location becomes shop, no chair, stock becomes primary</li>
+    <li><strong>Yoga / pilates studios</strong> — classes + intro-week trials</li>
+    <li><strong>Beauty clinics</strong> — treatments + consultation gates</li>
+  </ul>
+  <p style="margin-top:14px">Kernel + tools swap. Substrate stays.</p>
+</section>
+
+<section class="section">
+  <div class="cta" style="margin-top:20px">
+    <a href="../setup.html" class="btn">Deploy free · setup guide</a>
+    <a href="../clients.html" class="btn ghost">Book Pro setup</a>
+    <a href="../modules.html" class="btn ghost">Browse modules</a>
+  </div>
+</section>
+
+</main>
+
+<script defer src="../assets/nav.js"></script>
+</body>
+</html>

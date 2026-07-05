@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ad firm vertical · FallHub</title>
+<meta name="description" content="FallHub for creative agencies, brand studios, freelance strategists. Multi-brand voice kernel, client pipeline, deliverable chasing, milestone invoicing.">
+<meta name="theme-color" content="#0b0a0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a0f'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%23b8974a' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/theme.css">
+</head>
+<body>
+
+<main class="wide">
+
+<section class="hero">
+  <div class="tag"><span class="glyph">✎</span> Vertical · Ad firm / Creative agency</div>
+  <h1>For ad firms. <em>More making · less chasing.</em></h1>
+  <p class="lede">Creative agencies · brand studios · freelance strategists · content houses. Multi-brand voice kernel (one AI, N distinct client voices). Deliverable chasing, milestone invoicing, campaign timelines. Ships with FallReach for outbound.</p>
+  <div class="cta">
+    <a href="../setup.html" class="btn brass">Deploy ad firm template</a>
+    <a href="../clients.html" class="btn ghost">Book Pro setup</a>
+    <a href="../modules.html" class="btn ghost">See agency modules</a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The vertical config</span>
+  <h2>The kernel · <em>multi-client, multi-voice.</em></h2>
+  <div class="split">
+    <div>
+      <p>Ad firm kernel structure is different: instead of one business voice, it holds <strong>N brand voices</strong> — one per client. Each voice is learned from past deliverables and feedback. When the AI drafts a reply or asset for Client Foo, it uses Foo's voice. For Client Bar, Bar's voice.</p>
+      <p>Kernel also encodes: campaign pipelines, deliverable schedules, feedback loop patterns, milestone terms, contract-specific rates, priority clients.</p>
+    </div>
+    <div>
+      <pre><span class="c">// ad firm kernel · abridged</span>
+{
+  <span class="k">"agency"</span>: {
+    <span class="k">"name"</span>: <span class="s">"Threadline Studio"</span>,
+    <span class="k">"disciplines"</span>: [
+      <span class="s">"brand"</span>, <span class="s">"copy"</span>,
+      <span class="s">"social"</span>, <span class="s">"video"</span>
+    ]
+  },
+  <span class="k">"clients"</span>: [
+    {
+      <span class="k">"id"</span>: <span class="s">"clientfoo"</span>,
+      <span class="k">"name"</span>: <span class="s">"Foo Cosmetics"</span>,
+      <span class="k">"voice"</span>: {
+        <span class="k">"tone"</span>: <span class="s">"playful"</span>,
+        <span class="k">"banned"</span>: [<span class="s">"empowered"</span>]
+      },
+      <span class="k">"retainer_gbp"</span>: 4500,
+      <span class="k">"contract_end"</span>: <span class="s">"2027-03-01"</span>
+    }
+  ]
+}</pre>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The tools</span>
+  <h2>Verbs registered in the <em>ad firm template.</em></h2>
+  <div class="grid grid-3">
+    <div class="card"><h4>draft_copy</h4><p style="font-size:13.5px">Draft body copy / headlines / social in a specific client's voice.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>chase_approval</h4><p style="font-size:13.5px">Follow up client on outstanding approval. Configurable tone.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>book_photoshoot</h4><p style="font-size:13.5px">Coordinate photographer, location, model, wardrobe. Multi-party.</p><span class="pill warn">Auto-med</span></div>
+    <div class="card"><h4>schedule_deliverable</h4><p style="font-size:13.5px">Post to social calendar or brand's CMS via API.</p><span class="pill warn">Auto-med</span></div>
+    <div class="card"><h4>invoice_milestone</h4><p style="font-size:13.5px">Fire milestone invoice when deliverable ships + client approves.</p><span class="pill brass">Auto-low</span></div>
+    <div class="card"><h4>brief_intake</h4><p style="font-size:13.5px">Structured brief capture from new client inquiry. Kernel-populated.</p><span class="pill good">Always auto</span></div>
+    <div class="card"><h4>competitor_watch</h4><p style="font-size:13.5px">Weekly digest of what client's competitors published. Cassie Oracle.</p><span class="pill good">Always auto</span></div>
+    <div class="card"><h4>respond_lead</h4><p style="font-size:13.5px">Reply to inbound new-business inquiries.</p><span class="pill">Confidence gate</span></div>
+    <div class="card"><h4>flag_for_human</h4><p style="font-size:13.5px">Escalate high-stakes moments (pitch response, contract nego).</p><span class="pill good">Always available</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">The personas</span>
+  <h2>Ten archetypes · <em>agency client life.</em></h2>
+  <div class="grid grid-2" style="margin-top:14px">
+    <div class="card">
+      <h4>Personas</h4>
+      <ul style="padding-left:18px">
+        <li>Nervous new client · needs constant reassurance</li>
+        <li>Unresponsive agency-side · never approves anything on time</li>
+        <li>Penny-pinching startup · every line item questioned</li>
+        <li>Demanding old-hand · has strong opinions, changes brief mid-project</li>
+        <li>Ghost client · goes silent for weeks then wants urgent work</li>
+        <li>Great client · sees value, pays on time, referrable</li>
+        <li>Ex-in-house marketer · knows the industry, needs to be respected</li>
+        <li>PE-backed founder · scaling fast, changes priorities weekly</li>
+        <li>Non-marketer founder · trusts you, needs education</li>
+        <li>Warring stakeholders · CMO wants A, CEO wants B, you're piggy-in-middle</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Scenarios (weighted)</h4>
+      <ul style="padding-left:18px">
+        <li>Brief feedback / revision · 25%</li>
+        <li>Approval overdue · 15%</li>
+        <li>New brief inbound · 12%</li>
+        <li>Deliverable ready to ship · 10%</li>
+        <li>Invoice question · 8%</li>
+        <li>Scope creep attempt · 8%</li>
+        <li>Competitor did-you-see-X · 5%</li>
+        <li>Contract renewal window · 5%</li>
+        <li>Cold outbound response · 5%</li>
+        <li>Pitch invitation · 4%</li>
+        <li>Referral thank-you · 3%</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">A day in the life</span>
+  <h2>What the agency autopilot <em>does for you.</em></h2>
+  <div class="card raised">
+    <p><strong>08:00</strong> · Open FallHub. 3 client feedback threads arrived overnight. AI drafted responses in each client's brand voice (learned from past emails). Two ready for you to send. One flagged for human — the client questioned the direction and it needs a strategic reply, not a tactical one.</p>
+    <p><strong>09:30</strong> · Two clients are overdue on approval from last Friday. AI auto-chased with the tone the kernel says works best for each (nudging vs. formal reminder).</p>
+    <p><strong>11:00</strong> · New business inquiry via LinkedIn (FallReach picked it up). AI drafted a warm-response with a brief-intake link. You approve, it sends. Prospect fills the brief, AI slots it into your CRM as a warm lead.</p>
+    <p><strong>13:00</strong> · Photoshoot for Client Foo booked. AI coordinated photographer, model agency, and studio, all confirmed. Wardrobe brief sent to stylist. You review the outputs, no changes needed.</p>
+    <p><strong>15:00</strong> · Milestone invoice for the campaign that shipped Friday auto-generated and sent to Client Bar's accounts email. Chase configured for 30-day terms.</p>
+    <p><strong>17:00</strong> · Weekly competitor digest across all your clients ready in your inbox. Three items worth surfacing to specific clients — AI drafted the "did you see this" emails.</p>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Modules commonly installed on agencies</span>
+  <h2>The agency stack.</h2>
+  <div class="grid grid-3">
+    <div class="module-card"><div class="m-head"><h4>FallReach</h4><span class="pill mit">MIT</span></div><div class="m-desc">Multichannel outbound. LinkedIn + email + WhatsApp + IG.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallCRM Elite</h4><span class="pill mit">MIT</span></div><div class="m-desc">Client pipeline, deals, signals timeline.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallAccount</h4><span class="pill mit">MIT</span></div><div class="m-desc">Retainer + milestone billing. VAT. Late-fee automation.</div></div>
+    <div class="module-card"><div class="m-head"><h4>Cassie Oracle</h4><span class="pill mit">MIT</span></div><div class="m-desc">Competitor watch across all your clients. Weekly digest.</div></div>
+    <div class="module-card"><div class="m-head"><h4>Botler</h4><span class="pill mit">MIT</span></div><div class="m-desc">In-browser Llama for private-brief drafting.</div></div>
+    <div class="module-card"><div class="m-head"><h4>FallBrief</h4><span class="pill mit">MIT</span></div><div class="m-desc">Contract clauses, IP transfer, scope-creep dispute wording.</div></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="cta" style="margin-top:20px">
+    <a href="../setup.html" class="btn">Deploy free · setup guide</a>
+    <a href="../clients.html" class="btn ghost">Book Pro setup</a>
+    <a href="../modules.html" class="btn ghost">Browse modules</a>
+  </div>
+</section>
+
+</main>
+
+<script defer src="../assets/nav.js"></script>
+</body>
+</html>

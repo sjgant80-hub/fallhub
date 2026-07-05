@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Verticals · FallHub</title>
+<meta name="description" content="Four flagship vertical templates (hospitality, trades, ad firm, accounting) plus barbershop chain and a bespoke pattern that fits any niche. All on the same FallHub substrate.">
+<meta name="theme-color" content="#0b0a0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0a0f'/%3E%3Ctext x='16' y='22' font-family='serif' font-size='18' fill='%23b8974a' text-anchor='middle'%3E%E2%97%8A%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/theme.css">
+</head>
+<body>
+
+<main class="wide">
+
+<section class="hero">
+  <div class="tag"><span class="glyph">◊</span> FallHub · vertical templates</div>
+  <h1>Same substrate. <em>Any vertical.</em></h1>
+  <p class="lede">Each vertical is a 20-line configuration on top of the identical FallHub core. Different kernel (what the AI knows). Different tools (what the AI can do). Different personas (who your customers are). Same event log, same autonomy dial, same training simulator, same module marketplace.</p>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Flagship four · ready today</span>
+  <h2>Pick a template · <em>configure · deploy.</em></h2>
+
+  <div class="grid grid-2" style="margin-top:24px">
+    <a href="verticals/hospitality.html" class="vertical-card">
+      <div class="icon">◊</div>
+      <h3>Hospitality</h3>
+      <div class="desc">Holiday rentals · glamping · B&Bs · boutique hotels · shepherd's huts · treehouse retreats. Live reference implementation is Wishwood — a real cottage taking real bookings.</div>
+      <div class="meta"><span class="pill good">Live proof</span><span class="pill brass">Reference</span></div>
+      <span class="go">See how it works</span>
+    </a>
+    <a href="verticals/trades.html" class="vertical-card">
+      <div class="icon">⚒</div>
+      <h3>Trades</h3>
+      <div class="desc">Plumbers · electricians · decorators · gas engineers · landscapers · roofers · builders. Quote jobs, schedule callouts, chase money, respond to emergencies, keep certificates current.</div>
+      <div class="meta"><span class="pill">Ready</span><span class="pill brass">FallAccount preloaded</span></div>
+      <span class="go">See how it works</span>
+    </a>
+    <a href="verticals/adshop.html" class="vertical-card">
+      <div class="icon">✎</div>
+      <h3>Ad firm</h3>
+      <div class="desc">Creative agencies · brand studios · freelance strategists · content houses. Manage clients, campaigns, deliverables, feedback loops, milestones, invoicing. Multi-brand voice kernel.</div>
+      <div class="meta"><span class="pill">Ready</span><span class="pill brass">FallReach preloaded</span></div>
+      <span class="go">See how it works</span>
+    </a>
+    <a href="verticals/accounting.html" class="vertical-card">
+      <div class="icon">Σ</div>
+      <h3>Accounting practice</h3>
+      <div class="desc">Bookkeepers · self-assessment · VAT · CT · payroll bureaux. HMRC calendar, chase missing docs, draft letters, estimate liabilities, MTD-ready. UK-first, extensible.</div>
+      <div class="meta"><span class="pill">Ready</span><span class="pill brass">FallAccount preloaded</span></div>
+      <span class="go">See how it works</span>
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Bonus flagship · pattern-heavy</span>
+
+  <div class="grid grid-2" style="margin-top:16px">
+    <a href="verticals/barbershop.html" class="vertical-card">
+      <div class="icon">✂</div>
+      <h3>Barbershop chain</h3>
+      <div class="desc">Multi-location grooming. Walk-in queue, appointment book, loyalty punch card, staff shifts, product stock, review responses. Shows the multi-location pattern that fits gyms, cafés, salons, small retail chains too.</div>
+      <div class="meta"><span class="pill">Ready</span><span class="pill brass">Multi-location pattern</span></div>
+      <span class="go">See how it works</span>
+    </a>
+    <a href="#any-niche" class="vertical-card" style="border-style:dashed">
+      <div class="icon">?</div>
+      <h3>Your niche · bespoke</h3>
+      <div class="desc">Restaurant · gym · e-commerce brand · consultant · solicitor · courier · property manager · charity · coach · therapy practice · yoga studio · music school · art gallery · dog trainer.</div>
+      <div class="meta"><span class="pill brass">Bespoke template · 3-5 days</span></div>
+      <span class="go">Read the pattern</span>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="any-niche">
+  <span class="section-eyebrow">The pattern · any niche fits</span>
+  <h2>How to build a vertical <em>for any small business.</em></h2>
+  <p>A vertical template is three files on top of the FallHub core. Total code: usually under 300 lines. Total time from spec to live deployment: 3-5 days for a new domain, one afternoon for a variant.</p>
+
+  <div class="grid grid-3" style="margin-top:22px">
+    <div class="card">
+      <h3>1 · The kernel</h3>
+      <p style="font-size:14px">A JSON file that describes what the business <em>is</em>. Facts the AI must respect. Facts the AI must never invent.</p>
+      <pre><span class="c">// vertical kernel</span>
+{
+  <span class="k">"business"</span>: {
+    <span class="k">"name"</span>: <span class="s">"Rivendell Restaurant"</span>,
+    <span class="k">"type"</span>: <span class="s">"restaurant"</span>,
+    <span class="k">"seats"</span>: 42,
+    <span class="k">"cuisine"</span>: <span class="s">"seasonal british"</span>,
+    <span class="k">"not_present"</span>: [
+      <span class="s">"outdoor seating"</span>,
+      <span class="s">"private dining room"</span>
+    ]
+  },
+  <span class="k">"voice"</span>: { <span class="k">"tone"</span>: <span class="s">"warm"</span> },
+  <span class="k">"policies"</span>: { ... }
+}</pre>
+    </div>
+    <div class="card">
+      <h3>2 · The tools</h3>
+      <p style="font-size:14px">A registry of verbs the AI is allowed to invoke. Each verb has a JSON schema (for function-calling), guardrails, and a reversibility window.</p>
+      <pre><span class="c">// tool registry</span>
+{
+  <span class="k">"name"</span>: <span class="s">"take_reservation"</span>,
+  <span class="k">"parameters"</span>: { ... },
+  <span class="k">"guardrails"</span>: {
+    <span class="k">"auto_low"</span>: <span class="k">true</span>,
+    <span class="k">"max_party"</span>: 8
+  },
+  <span class="k">"reversible_ms"</span>: 30000,
+  <span class="k">"execute"</span>: async (args) => {
+    <span class="c">// write to calendar</span>
+  }
+}</pre>
+    </div>
+    <div class="card">
+      <h3>3 · The personas</h3>
+      <p style="font-size:14px">Archetypes of your typical customers plus scenarios they trigger. Powers the training simulator so the human operator can practice before real customers arrive.</p>
+      <pre><span class="c">// sim personas + scenarios</span>
+[
+  {
+    <span class="k">"name"</span>: <span class="s">"Anna Mercer"</span>,
+    <span class="k">"archetype"</span>: <span class="s">"dietary_restriction"</span>,
+    <span class="k">"traits"</span>: <span class="s">"coeliac, specific"</span>,
+    <span class="k">"temperament"</span>: 0.7
+  }, ...
+]
+
+<span class="c">// scenarios: reservation,
+   dietary_ask, complaint,
+   walk_in, group_booking...</span></pre>
+    </div>
+  </div>
+
+  <div class="card raised" style="margin-top:24px">
+    <h3 style="color:var(--creamL);font-style:normal">Not sure what your niche needs?</h3>
+    <p>Book a Pro setup and we'll build your vertical template for you. You keep the code (MIT). We publish it back to the estate so future SMBs in the same niche inherit it. Everyone wins.</p>
+    <div style="margin-top:14px">
+      <a href="clients.html" class="btn">Book Pro setup</a>
+      <a href="setup.html" class="btn ghost">Or build it yourself</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <span class="section-eyebrow">Shared by every vertical</span>
+  <h2>What you get regardless <em>of vertical.</em></h2>
+  <ul class="tick-list">
+    <li><strong>BYOK adapter</strong> across 6 LLM providers (Anthropic, OpenAI, Gemini, Groq, Mistral, WebLLM local)</li>
+    <li><strong>Kernel-grounded reasoning</strong> so the AI can't invent facts about your business</li>
+    <li><strong>Ed25519-signed event log</strong> for audit trail and reversibility</li>
+    <li><strong>Autonomy dial</strong> from Watch → Suggest → Auto-Low → Auto-Med → Full</li>
+    <li><strong>Training simulator</strong> with WebLLM personas so you practice before going live</li>
+    <li><strong>60+ estate modules</strong> from a marketplace of pre-built capabilities</li>
+    <li><strong>Data portability</strong> · one-click signed JSON export of everything</li>
+    <li><strong>MCP exposure</strong> so external agents (Claude Code, custom bots) can drive your instance</li>
+    <li><strong>MIT licence</strong> · own it, fork it, run it forever · no lock-in</li>
+  </ul>
+</section>
+
+</main>
+
+<script defer src="assets/nav.js"></script>
+</body>
+</html>
