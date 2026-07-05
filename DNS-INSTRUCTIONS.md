@@ -9,7 +9,8 @@ Follow these steps when ready to point the domain. Until then the `.github.io` U
 - **`install.ai-nativesolutions.com`** → `sjgant80-hub.github.io/fallforge/` — the FallForge concierge
 - **`roost.ai-nativesolutions.com`** → `sjgant80-hub.github.io/roost/` — hospitality showroom
 - **`adshop.ai-nativesolutions.com`** → `sjgant80-hub.github.io/adshop/` — creative-agency showroom
-- **`trades.ai-nativesolutions.com`** → `sjgant80-hub.github.io/tradeshub/` — trades showroom (shipping next)
+- **`trades.ai-nativesolutions.com`** → `sjgant80-hub.github.io/tradeshub/` — trades showroom
+- **`barber.ai-nativesolutions.com`** → `sjgant80-hub.github.io/barberhq/` — multi-location chain showroom
 
 ## Step 1 · Add DNS records at your registrar
 
@@ -44,6 +45,7 @@ Type    Name     Value
 CNAME   roost    sjgant80-hub.github.io
 CNAME   adshop   sjgant80-hub.github.io
 CNAME   trades   sjgant80-hub.github.io
+CNAME   barber   sjgant80-hub.github.io
 ```
 
 ## Step 2 · Wait for DNS propagation (5-30 min)
@@ -65,6 +67,8 @@ cd /c/Users/sjgan/Downloads/roost && echo "roost.ai-nativesolutions.com" > CNAME
 cd /c/Users/sjgan/Downloads/adshop && echo "adshop.ai-nativesolutions.com" > CNAME && git add CNAME && git commit -m "Point adshop.ai-nativesolutions.com at AdShop" && git push
 # tradeshub → trades showroom
 cd /c/Users/sjgan/Downloads/tradeshub && echo "trades.ai-nativesolutions.com" > CNAME && git add CNAME && git commit -m "Point trades.ai-nativesolutions.com at TradesHub" && git push
+# barberhq → chain showroom
+cd /c/Users/sjgan/Downloads/barberhq && echo "barber.ai-nativesolutions.com" > CNAME && git add CNAME && git commit -m "Point barber.ai-nativesolutions.com at BarberHQ" && git push
 ```
 
 ## Step 4 · Enable HTTPS in GitHub Pages settings
