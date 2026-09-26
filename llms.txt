@@ -55,12 +55,10 @@ Each vertical is a 20-line kernel config + tool registry + persona set on top of
 - Hospitality showroom: https://sjgant80-hub.github.io/roost/
 - Repo: https://github.com/sjgant80-hub/onehub
 
-## Pricing
+## Ownership
 
-- Sovereign: £0 forever · fork and deploy yourself · full FallHub + every MIT module · community support
-- Starter: £29/month · guided setup + email support
-- Pro: £199/month · done-for-you deployment + autonomy calibration
-- Agency: £999/month · unlimited client deployments + white-label
+- Sovereign: Free forever · fork and deploy yourself · full FallHub + every MIT module · community support · no subscription, no per-seat lock-in
+- Optional done-for-you support is available (concierge setup, full deployment + tuning, agency / white-label) for owners who'd rather have it deployed for them
 
 ## Publisher
 
