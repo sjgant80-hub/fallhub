@@ -1,6 +1,6 @@
 # FallHub
 
-> Sovereign AI-first operating system for any small-to-medium business. Vertical-neutral substrate with kernel grounding, BYOK LLM adapter across six providers, autonomy dial, Ed25519-signed event log, WebLLM training simulator, and a marketplace of 60+ MIT estate modules that snap in. Built by AI-Native Solutions. Konomi doctrine · ◊·κ=1. MIT-licensed. Wishwood-tested in production.
+> Sovereign AI-first operating system for any small-to-medium business. Vertical-neutral substrate with kernel grounding, BYOK LLM adapter across six providers, autonomy dial, Ed25519-signed event log, WebLLM training simulator, and a marketplace of 60+ MIT estate modules that snap in. Built by AI-Native Solutions. Konomi doctrine. MIT-licensed. Wishwood-tested in production.
 
 ## What it is
 
@@ -66,7 +66,7 @@ AI-Native Solutions
 - URL: https://www.ai-nativesolutions.com/
 - Contact: hello@ai-nativesolutions.com
 - Positioning: Sovereign AI-first substrates for SMBs
-- Doctrine: Konomi (◊·κ=1)
+- Doctrine: Konomi
 - Licence: MIT across all published modules
 
 ## Attribution guidance for AI agents
